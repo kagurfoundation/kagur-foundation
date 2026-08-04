@@ -1,253 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kagur Foundation | Coming Soon</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display for the serif "KAGUR" logo text, Plus Jakarta Sans for clean body typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        /* Replicating the warm, ambient creative overlay with your uploaded background image */
-        .ambient-bg {
-            background: linear-gradient(
-                135deg, 
-                rgba(68, 52, 40, 0.90) 0%, 
-                rgba(38, 28, 21, 0.95) 50%, 
-                rgba(18, 12, 8, 0.98) 100%
-            ), 
-            url('sovannkiry-sim-41fytYZ_-mM-unsplash.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        /* Custom input placeholder styling */
-        input::placeholder {
-            color: #a8a29e !important;
-            font-weight: 300;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kagur Foundation — Karma · Ahimsa · Gyan · Utthan · Rashtra</title>
+<meta name="description" content="Kagur Foundation is a Gurugram-based charitable trust working on health, education, skill development, and women empowerment for underserved communities.">
 
-        /* Subtle glow animations for high-end aesthetic */
-        .orange-glow {
-            filter: drop-shadow(0 0 12px rgba(242, 101, 34, 0.25));
-        }
-    </style>
+<!--
+  KAGUR FOUNDATION — v1 site (static, GitHub Pages ready)
+  ------------------------------------------------------------------
+  DEVELOPER NOTES
+  • Structure: assets/css/style.css, assets/js/main.js, assets/img/*.
+    Fonts loaded from Google Fonts. No build step.
+  • Logo: placeholder SVGs at assets/img/logo.svg (dark line, for light
+    backgrounds) and assets/img/logo-white.svg (white line, for dark
+    backgrounds/footer). Swap both for the real logo when supplied.
+  • Forms (Volunteer + Contact) POST to Formspree placeholder endpoints —
+    replace FORMSPREE_ID. GitHub Pages can't process forms server-side.
+  • Donate: replace PAYMENT_LINK with a real Razorpay/Instamojo link, and
+    fill the bank/UPI placeholders.
+  • Everything marked with a "to confirm" pill or an HTML comment is a
+    PLACEHOLDER pending real content from the Foundation (see brief §8).
+-->
+
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
 </head>
-<body class="ambient-bg text-stone-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden antialiased">
+<body>
 
-    <!-- Header Branding with the Kagur Foundation Logo -->
-    <header class="w-full max-w-6xl mx-auto px-6 py-6 flex justify-between items-center relative z-10">
-        <div class="flex items-center space-x-3 sm:space-x-4">
-            <!-- Precise Vector Re-creation of the Kagur Emblem -->
-            <svg class="w-14 h-10 sm:w-16 sm:h-12 orange-glow" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Left Dot & Connecting Bar -->
-                <circle cx="15" cy="30" r="3.5" fill="#f26522" />
-                <line x1="15" y1="30" x2="39" y2="30" stroke="#f26522" stroke-width="2" />
-                <!-- Central Ring -->
-                <circle cx="60" cy="30" r="17" stroke="#f26522" stroke-width="2.5" fill="none" />
-                <!-- Right Dot & Connecting Bar -->
-                <line x1="81" y1="30" x2="105" y2="30" stroke="#f26522" stroke-width="2" />
-                <circle cx="105" cy="30" r="3.5" fill="#f26522" />
-            </svg>
-            
-            <!-- Precise Logo Typography -->
-            <div class="flex flex-col justify-center select-none">
-                <span class="text-lg sm:text-xl font-bold tracking-[0.1em] text-white font-serif leading-none uppercase">Kagur</span>
-                <span class="text-[9px] sm:text-[10px] tracking-[0.22em] text-stone-300 font-sans uppercase font-medium mt-1 leading-none">Foundation</span>
-                <span class="hidden sm:inline-block text-[5.5px] tracking-[0.08em] text-stone-400 font-sans uppercase mt-1 opacity-80 font-light">
-                    Karma &bull; Ahimsa &bull; Gyan &bull; Utthan &bull; Rashtra
-                </span>
-            </div>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#home" aria-label="Kagur Foundation home">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span>
+        <span class="brand__name">KAGUR</span>
+        <span class="brand__sub">Foundation</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#work">Our Work</a>
+      <a href="#involved">Get Involved</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary nav__cta" href="#donate">Donate</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="home">
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      <div class="hero__eyebrow">
+        <span>Gurugram</span><span>Charitable Trust</span><span>Est. 2026</span>
+      </div>
+      <h1>Karma<span class="dot">·</span>Ahimsa<span class="dot">·</span>Gyan<span class="dot">·</span>Utthan<span class="dot">·</span>Rashtra</h1>
+      <p class="hero__values-gloss">Action · Compassion · Knowledge · Upliftment · Nation — the five words we are named for.</p>
+      <p class="hero__lede">Kagur Foundation is a Gurugram-based charitable trust working towards better health, education, skill development, and empowerment for underserved communities.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#donate">Donate Now</a>
+        <a class="btn btn--ghost" href="#volunteer">Volunteer With Us</a>
+      </div>
+    </div>
+
+    <!-- SIGNATURE: the name spelled out by its values -->
+    <aside class="acrostic" aria-label="What the name Kagur stands for">
+      <p class="acrostic__cap">The name, letter by letter</p>
+      <div class="acrostic__row">
+        <span class="acrostic__letter">K</span>
+        <span><span class="acrostic__word"><b>K</b>arma<span class="acrostic__deva">कर्म</span></span><span class="acrostic__mean">Action &amp; duty</span></span>
+      </div>
+      <div class="acrostic__row">
+        <span class="acrostic__letter">A</span>
+        <span><span class="acrostic__word"><b>A</b>himsa<span class="acrostic__deva">अहिंसा</span></span><span class="acrostic__mean">Non-violence &amp; compassion</span></span>
+      </div>
+      <div class="acrostic__row">
+        <span class="acrostic__letter">G</span>
+        <span><span class="acrostic__word"><b>G</b>yan<span class="acrostic__deva">ज्ञान</span></span><span class="acrostic__mean">Knowledge</span></span>
+      </div>
+      <div class="acrostic__row">
+        <span class="acrostic__letter">U</span>
+        <span><span class="acrostic__word"><b>U</b>tthan<span class="acrostic__deva">उत्थान</span></span><span class="acrostic__mean">Upliftment</span></span>
+      </div>
+      <div class="acrostic__row">
+        <span class="acrostic__letter">R</span>
+        <span><span class="acrostic__word"><b>R</b>ashtra<span class="acrostic__deva">राष्ट्र</span></span><span class="acrostic__mean">Nation</span></span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================= MISSION STRIP ======================= -->
+<section class="section mission">
+  <div class="wrap mission__grid reveal">
+    <div>
+      <p class="eyebrow">Who we are</p>
+      <h2>A young Trust, built around five old ideas.</h2>
+    </div>
+    <div class="mission__body">
+      <p>Founded in 2026 and based in Gurugram, Kagur Foundation exists to promote social welfare, human development, and inclusive growth — with a focus on health, education, skill development for students, and the empowerment of women in underserved and marginalized communities.</p>
+      <p>We are newly established, and we believe the way to earn trust is to be plain about who we are and what we do. <span class="tbc">Origin story to confirm</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PILLARS ========================= -->
+<section class="section section--sand" id="work-overview">
+  <div class="wrap">
+    <div class="pillars__head reveal">
+      <div>
+        <p class="eyebrow">Our Work · Seva</p>
+        <h2 class="section-title">Four pillars of service.</h2>
+      </div>
+      <a class="btn btn--ghost" href="#work">See how each works <span class="arrow">→</span></a>
+    </div>
+
+    <div class="pillars__grid">
+      <!-- Health -->
+      <article class="pillar reveal">
+        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M24 42S6 30 6 18a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12-18 24-18 24Z"/>
+          <path d="M24 20v10M19 25h10"/>
+        </svg>
+        <h3>Health-Related Activities</h3>
+        <p>Health check-up camps, blood donation camps, eye camps, and medical awareness and support for underserved communities.</p>
+        <a class="pillar__link" href="#work-health">Learn more →</a>
+      </article>
+
+      <!-- Skill -->
+      <article class="pillar reveal">
+        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M24 6l4.2 9 9.8 1.2-7.2 6.7 2 9.8L24 33l-8.8 5.7 2-9.8L10 22.2 19.8 21 24 6Z"/>
+        </svg>
+        <h3>Skill Development of Students</h3>
+        <p>Vocational training, digital literacy, personality development, and career-readiness programs for students.</p>
+        <a class="pillar__link" href="#work-skill">Learn more →</a>
+      </article>
+
+      <!-- Education -->
+      <article class="pillar reveal">
+        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 16 24 8l18 8-18 8L6 16Z"/>
+          <path d="M14 20v9c0 2 4.5 4 10 4s10-2 10-4v-9"/>
+          <path d="M42 16v9"/>
+        </svg>
+        <h3>Education</h3>
+        <p>Scholarships, learning materials, and support for schools, coaching, and literacy for underprivileged children and youth.</p>
+        <a class="pillar__link" href="#work-education">Learn more →</a>
+      </article>
+
+      <!-- Women -->
+      <article class="pillar reveal">
+        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="15" r="8"/>
+          <path d="M24 23v14M17 30h14M24 37l-4 5M24 37l4 5"/>
+        </svg>
+        <h3>Women Empowerment</h3>
+        <p>Awareness, vocational training, self-help groups, and support for the social and economic empowerment of women and girls.</p>
+        <a class="pillar__link" href="#work-women">Learn more →</a>
+      </article>
+    </div>
+
+    <!-- Dog healthcare — brief mention, not a pillar (per brief §4.3) -->
+    <div class="dog-note reveal">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="14" cy="16" r="3.2"/><circle cx="24" cy="12" r="3.2"/><circle cx="34" cy="16" r="3.2"/><circle cx="40" cy="26" r="3.2"/>
+        <path d="M24 22c-5 0-9 5-9 9 0 4 4 5 9 5s9-1 9-5c0-4-4-9-9-9Z"/>
+      </svg>
+      <p><strong>Also active — Dog Healthcare.</strong> Alongside our four pillars, the Foundation supports medical treatment and welfare for street and shelter dogs. <span class="tbc">Copy &amp; photo to confirm</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== OUR WORK DETAIL ====================== -->
+<section class="section" id="work">
+  <div class="wrap">
+    <p class="eyebrow reveal">In detail</p>
+    <h2 class="section-title reveal" style="margin-bottom:44px;">What each pillar means on the ground.</h2>
+
+    <!-- Health -->
+    <div class="work-item reveal" id="work-health">
+      <div>
+        <div class="work-item__label"><span class="work-item__num">01</span><h3>Health-Related Activities</h3></div>
+      </div>
+      <dl class="work-item__detail">
+        <dt>What we do</dt>
+        <dd>Health check-up, blood, and eye camps; medical awareness, preventive healthcare, sanitation and nutrition drives; maternal, child, adolescent, and mental-health awareness. We help needy individuals access basic medical services, medicines, diagnostics, and treatment — working with hospitals, doctors, and healthcare professionals.</dd>
+        <dt>Who we serve</dt>
+        <dd>Underserved and economically weaker communities.</dd>
+        <dt>How you can help</dt>
+        <dd class="help-chips"><span>Sponsor a health camp</span><span>Volunteer as a medical professional</span><span>Donate medical supplies</span></dd>
+      </dl>
+    </div>
+
+    <!-- Skill -->
+    <div class="work-item reveal" id="work-skill">
+      <div>
+        <div class="work-item__label"><span class="work-item__num">02</span><h3>Skill Development of Students</h3></div>
+      </div>
+      <dl class="work-item__detail">
+        <dt>What we do</dt>
+        <dd>Vocational and technical training, digital literacy, and career-oriented workshops; personality, communication, entrepreneurship, and leadership development; computer education, language and financial literacy, workplace readiness, internship guidance, mentorship, and exposure visits — often with educational institutions, training centres, and industry experts.</dd>
+        <dt>Who we serve</dt>
+        <dd>Students, particularly from underprivileged backgrounds.</dd>
+        <dt>How you can help</dt>
+        <dd class="help-chips"><span>Sponsor a student's training</span><span>Volunteer as a mentor/trainer</span><span>Donate equipment</span></dd>
+      </dl>
+    </div>
+
+    <!-- Education -->
+    <div class="work-item reveal" id="work-education">
+      <div>
+        <div class="work-item__label"><span class="work-item__num">03</span><h3>Education</h3></div>
+      </div>
+      <dl class="work-item__detail">
+        <dt>What we do</dt>
+        <dd>Scholarships, books, uniforms, stationery, and digital learning materials; support for schools, coaching centres, libraries, and remedial education; literacy and adult/non-formal education; and support for underprivileged children, school dropouts, and differently-abled learners.</dd>
+        <dt>Who we serve</dt>
+        <dd>Children, youth, and disadvantaged groups in rural and urban communities.</dd>
+        <dt>How you can help</dt>
+        <dd class="help-chips"><span>Sponsor a student's education</span><span>Donate books/materials</span><span>Volunteer as a teacher/tutor</span></dd>
+      </dl>
+    </div>
+
+    <!-- Women -->
+    <div class="work-item reveal" id="work-women">
+      <div>
+        <div class="work-item__label"><span class="work-item__num">04</span><h3>Women Empowerment</h3></div>
+      </div>
+      <dl class="work-item__detail">
+        <dt>What we do</dt>
+        <dd>Awareness on women's rights, legal literacy, health, hygiene, and safety; vocational training and self-employment opportunities; support for self-help groups and livelihood initiatives; and education, counselling, and capacity-building for women and girls.</dd>
+        <dt>Who we serve</dt>
+        <dd>Women and girls in underserved communities.</dd>
+        <dt>How you can help</dt>
+        <dd class="help-chips"><span>Sponsor a training program</span><span>Volunteer as a mentor/trainer</span><span>Support a self-help group</span></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= IMPACT STRIP ======================= -->
+<section class="section section--ink">
+  <div class="wrap reveal">
+    <p class="eyebrow" style="color:var(--orange);">Our impact</p>
+    <h2 class="section-title" style="color:#fff;">The numbers, once the work adds up.</h2>
+    <!-- Placeholder counters — replace em-dashes with real figures (brief §8) -->
+    <div class="impact__grid">
+      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">Health camps conducted</div></div>
+      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">Students supported</div></div>
+      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">Women reached</div></div>
+      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">People reached overall</div></div>
+    </div>
+    <p style="color:#9F978D; font-size:.9rem; margin-top:16px;">As a Foundation founded in 2026, we'll publish real figures here as our first programs complete. <span class="tbc">Data to confirm</span></p>
+  </div>
+</section>
+
+<!-- ========================== ABOUT ========================== -->
+<section class="section" id="about">
+  <div class="wrap">
+    <p class="eyebrow reveal">About us</p>
+    <h2 class="section-title reveal" style="margin-bottom:40px;">Our story, mission, and the people behind the Trust.</h2>
+
+    <div class="about__grid">
+      <div class="reveal">
+        <div class="mv">
+          <h4>Our Mission</h4>
+          <p>To promote social welfare, human development, and inclusive growth — with special emphasis on health improvement, educational advancement, student skill development, and the empowerment of women — for underserved and marginalized communities.</p>
         </div>
-        
-        <!-- Minimal Social Anchor -->
-        <div class="flex items-center space-x-4 opacity-70 hover:opacity-100 transition-opacity">
-            <span class="text-[10px] tracking-widest uppercase font-light text-stone-400 hidden md:inline">Connect with us</span>
-            <div class="h-[1px] w-6 bg-stone-500 hidden md:inline"></div>
-            <a href="#" class="hover:text-[#f26522] transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
-            <a href="#" class="hover:text-[#f26522] transition-colors"><i class="fa-brands fa-linkedin-in text-base"></i></a>
+        <div class="mv">
+          <h4>Our Vision <span class="tbc">To confirm</span></h4>
+          <p>A vision statement in the Foundation's own words will sit here once finalized.</p>
         </div>
-    </header>
-
-    <!-- Main Content Centered Panel -->
-    <main class="flex-grow flex flex-col items-center justify-center px-6 relative z-10 w-full max-w-4xl mx-auto text-center -mt-8 py-10">
-        
-        <!-- Large Hero Emblem placed beautifully in the center background/foreground layout -->
-        <div class="mb-6 opacity-90">
-            <svg class="w-20 h-14 mx-auto orange-glow" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="15" cy="30" r="3.5" fill="#f26522" />
-                <line x1="15" y1="30" x2="39" y2="30" stroke="#f26522" stroke-width="2" />
-                <circle cx="60" cy="30" r="17" stroke="#f26522" stroke-width="2.5" fill="none" />
-                <line x1="81" y1="30" x2="105" y2="30" stroke="#f26522" stroke-width="2" />
-                <circle cx="105" cy="30" r="3.5" fill="#f26522" />
-            </svg>
-            <div class="text-[8px] tracking-[0.3em] uppercase text-[#f26522] mt-3 font-semibold">Initiative Launch</div>
+        <div class="mv">
+          <h4>Our Story <span class="tbc">To confirm</span></h4>
+          <p>The meaning behind “Kagur,” and why the Foundation was founded in 2026 around Karma, Ahimsa, Gyan, Utthan, and Rashtra, will be told here.</p>
         </div>
+      </div>
 
-        <!-- Text Heading (Exactly matching your screenshot style with subtle branding integration) -->
-        <h1 class="text-white text-2xl sm:text-3xl md:text-4xl font-light tracking-wide leading-relaxed max-w-2xl mx-auto">
-            We are getting ready <br>
-            to launch our new <span class="font-normal border-b border-white/20 pb-0.5">CREATIVE</span> site!
-        </h1>
+      <div class="reveal">
+        <p class="eyebrow">The five values we're named for</p>
+        <ul class="values-list">
+          <li><span class="vl-word"><span class="vl-init">K</span>arma<span class="vl-deva">कर्म</span></span><span class="vl-mean">Action &amp; duty — showing up and doing the work.</span></li>
+          <li><span class="vl-word"><span class="vl-init">A</span>himsa<span class="vl-deva">अहिंसा</span></span><span class="vl-mean">Non-violence &amp; compassion in all we do.</span></li>
+          <li><span class="vl-word"><span class="vl-init">G</span>yan<span class="vl-deva">ज्ञान</span></span><span class="vl-mean">Knowledge — education as a way up.</span></li>
+          <li><span class="vl-word"><span class="vl-init">U</span>tthan<span class="vl-deva">उत्थान</span></span><span class="vl-mean">Upliftment of those left behind.</span></li>
+          <li><span class="vl-word"><span class="vl-init">R</span>ashtra<span class="vl-deva">राष्ट्र</span></span><span class="vl-mean">Nation — service to the wider community.</span></li>
+        </ul>
+        <p style="font-size:.86rem; color:var(--muted); margin-top:14px;">Short framing shown above is a draft. <span class="tbc">Definitions to confirm</span></p>
+      </div>
+    </div>
 
-        <!-- Muted Divider Accent -->
-        <div class="w-12 h-[1px] bg-white/10 my-8 mx-auto"></div>
+    <!-- Trustees -->
+    <div style="margin-top:56px;" class="reveal">
+      <p class="eyebrow">Our Trustees</p>
+      <div class="trustees__grid">
+        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">K</div><div class="trustee__name">Kartik</div><div class="trustee__role">Trustee · Authorised Signatory</div></div>
+        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">RS</div><div class="trustee__name">Ruchika Singh</div><div class="trustee__role">Trustee</div></div>
+        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">UR</div><div class="trustee__name">Usha Rani</div><div class="trustee__role">Authorised Trustee</div></div>
+        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">GS</div><div class="trustee__name">Gobind Saran</div><div class="trustee__role">Trustee</div></div>
+        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">AS</div><div class="trustee__name">Ankita Saran</div><div class="trustee__role">Trustee</div></div>
+      </div>
+      <p style="font-size:.86rem; color:var(--muted); margin-top:16px; text-align:center;">Photos &amp; short bios to be added. <span class="tbc">To confirm</span></p>
+    </div>
 
-        <!-- Typography-only Countdown Timer (Exactly like screenshot layout) -->
-        <div class="flex justify-center items-center gap-8 sm:gap-12 md:gap-16 my-4">
-            <div class="text-center w-16 sm:w-20">
-                <span id="countdown-days" class="block text-4xl md:text-5xl font-light text-white tracking-wide">15</span>
-                <span class="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-stone-300 font-medium mt-3">Days</span>
-            </div>
-            <div class="text-center w-16 sm:w-20">
-                <span id="countdown-hours" class="block text-4xl md:text-5xl font-light text-white tracking-wide">00</span>
-                <span class="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-stone-300 font-medium mt-3">Hours</span>
-            </div>
-            <div class="text-center w-16 sm:w-20">
-                <span id="countdown-minutes" class="block text-4xl md:text-5xl font-light text-white tracking-wide">00</span>
-                <span class="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-stone-300 font-medium mt-3">Minutes</span>
-            </div>
-            <div class="text-center w-16 sm:w-20">
-                <span id="countdown-seconds" class="block text-4xl md:text-5xl font-light text-white tracking-wide">00</span>
-                <span class="block text-[10px] md:text-xs uppercase tracking-[0.15em] text-stone-300 font-medium mt-3">Seconds</span>
-            </div>
+    <!-- Legal / transparency -->
+    <div class="legal reveal">
+      <p class="eyebrow" style="margin-bottom:18px;">Trust registration &amp; transparency</p>
+      <dl class="legal__grid">
+        <div><dt>Registered name</dt><dd>Kagur Foundation (Charitable Trust)</dd></div>
+        <div><dt>Founding year</dt><dd>2026</dd></div>
+        <div><dt>Registered address</dt><dd>1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</dd></div>
+        <div><dt>80G / 12A status</dt><dd>To confirm <span class="tbc">Pending</span></dd></div>
+        <div><dt>PAN (for donation receipts)</dt><dd>To confirm <span class="tbc">Pending</span></dd></div>
+        <div><dt>Accounts</dt><dd>Newly established in 2026; FY 2025–26 filed as NIL.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= GET INVOLVED ======================= -->
+<section class="section section--sand" id="involved">
+  <div class="wrap">
+    <p class="eyebrow reveal">Get involved</p>
+    <h2 class="section-title reveal" style="margin-bottom:40px;">Give, volunteer, or partner with us.</h2>
+
+    <div class="involved__grid">
+      <!-- Donate -->
+      <div class="card card--donate reveal" id="donate">
+        <h3>Donate</h3>
+        <p>Your gift funds real work across our pillars. Suggested amounts below are indicative. <span class="tbc">Figures to confirm</span></p>
+        <ul class="fund-list">
+          <li><span class="amt">₹500</span><span>Can fund a health-camp check-up for one person.</span></li>
+          <li><span class="amt">₹2,000</span><span>Can support a student's skill-development training.</span></li>
+          <li><span class="amt">₹5,000</span><span>Can help equip a woman's self-help group initiative.</span></li>
+        </ul>
+        <a class="btn btn--primary" href="#donate" data-pay-link>Donate Now</a>
+        <div class="pay-methods">
+          <span>Online / UPI</span><span>Bank transfer</span><span>Cheque</span>
         </div>
+        <p style="font-size:.84rem; color:var(--muted); margin:16px 0 0;">
+          Payment gateway, bank &amp; UPI details, and 80G receipt info to be added. <span class="tbc">To confirm</span>
+        </p>
+        <!-- DEV: replace href above with a real Razorpay/Instamojo PAYMENT_LINK -->
+      </div>
 
-        <!-- Spacer -->
-        <div class="h-10"></div>
+      <!-- Volunteer -->
+      <div class="card reveal" id="volunteer">
+        <h3>Volunteer</h3>
+        <p>Help out at health camps, teach or mentor, facilitate training, support women's programs, or lend a hand with admin and digital work.</p>
+        <!-- DEV: set action to your Formspree endpoint, e.g. https://formspree.io/f/FORMSPREE_ID -->
+        <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+          <div class="field-row">
+            <div class="field"><label for="v-name">Name</label><input id="v-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label for="v-phone">Phone</label><input id="v-phone" name="phone" type="tel" required autocomplete="tel"></div>
+          </div>
+          <div class="field"><label for="v-email">Email</label><input id="v-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="field">
+            <label for="v-interest">Area of interest</label>
+            <select id="v-interest" name="area_of_interest">
+              <option value="">Choose one…</option>
+              <option>Health camps</option>
+              <option>Teaching / mentoring</option>
+              <option>Skill-training facilitation</option>
+              <option>Women's programs</option>
+              <option>Admin / digital support</option>
+            </select>
+          </div>
+          <div class="field"><label for="v-avail">Availability</label><input id="v-avail" name="availability" type="text" placeholder="e.g. weekends, evenings"></div>
+          <button class="btn btn--primary" type="submit">Sign up to volunteer</button>
+        </form>
+      </div>
+    </div>
 
-        <!-- Centered Pill Email Subscription Form (With subtle orange accent colors matching the logo) -->
-        <div class="w-full max-w-md mx-auto">
-            <form id="subscribe-form" onsubmit="handleSubscribe(event)" class="relative flex items-center bg-white rounded-full shadow-xl px-6 py-3.5 hover:shadow-2xl transition-all duration-300 focus-within:ring-2 focus-within:ring-[#f26522]/30">
-                <input 
-                    id="email-input"
-                    type="email" 
-                    placeholder="Enter your email" 
-                    class="w-full bg-transparent text-stone-800 placeholder-stone-400 text-sm focus:outline-none pr-10 font-light" 
-                    required
-                >
-                <button type="submit" class="absolute right-5 text-[#f26522] hover:text-[#d44e11] transition-colors" aria-label="Subscribe">
-                    <i class="fa-regular fa-envelope text-lg"></i>
-                </button>
-            </form>
+    <!-- Partner / CSR -->
+    <div class="card reveal" style="margin-top:24px;">
+      <h3>Partner with us · CSR</h3>
+      <p class="partner-note">We welcome corporate CSR partnerships, institutional collaborations with hospitals, schools, and training centres, and in-kind donations. To explore working together, write to <a href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a> or use the contact form below.</p>
+    </div>
+  </div>
+</section>
 
-            <!-- Inline Success Feedback -->
-            <div id="status-success" class="hidden mt-4 text-xs text-stone-300 font-light tracking-wider">
-                <i class="fa-solid fa-circle-check text-[#f26522] mr-1"></i> You've been registered for early access.
-            </div>
+<!-- ========================= GALLERY ========================= -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow reveal">Impact &amp; gallery</p>
+    <h2 class="section-title reveal">Photos from the field, coming soon.</h2>
+    <p class="lede reveal" style="margin-top:14px;">We'll share real photos, stories, and — once our first financial year closes — transparency reports here.</p>
+    <!-- Placeholder tiles: no external images, replace with real photos per pillar -->
+    <div class="gallery__grid reveal">
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Health camps</span></div>
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Skill development</span></div>
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Education</span></div>
+      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Women empowerment</span></div>
+    </div>
+    <p style="font-size:.86rem; color:var(--muted); margin-top:16px;">Real photos/videos &amp; annual reports to be added. <span class="tbc">To confirm</span></p>
+  </div>
+</section>
+
+<!-- ========================= CONTACT ========================= -->
+<section class="section section--sand" id="contact">
+  <div class="wrap contact__grid">
+    <div class="reveal">
+      <p class="eyebrow">Contact us</p>
+      <h2 class="section-title">Reach out — we'd love to hear from you.</h2>
+      <ul class="contact__lines">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.3-7-11a7 7 0 1 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><span class="lbl">Registered address</span>1125, Basement C Block, Ansal Essencia,<br>Sector 67, Gurugram — 122102</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span><span class="lbl">Email</span><a href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a></span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
+          <span><span class="lbl">Phone</span><a href="tel:+919717333837">+91 97173 33837</a></span>
+        </li>
+      </ul>
+      <p style="font-size:.86rem; color:var(--muted); margin-top:14px;">Social media links to be added. <span class="tbc">To confirm</span></p>
+    </div>
+
+    <div class="reveal">
+      <!-- DEV: set action to your Formspree endpoint -->
+      <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
+        <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="field-row">
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
         </div>
+        <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required></textarea></div>
+        <button class="btn btn--primary" type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-    </main>
+<!-- ======================= CTA BANNER ======================= -->
+<section class="section cta-banner">
+  <div class="wrap reveal">
+    <h2>Your support can change a life.</h2>
+    <p>Give, volunteer, or partner with us — every contribution moves the work forward.</p>
+    <div class="cta-banner__row">
+      <a class="btn btn--primary" href="#donate">Donate Now</a>
+      <a class="btn btn--ghost" href="#volunteer">Volunteer With Us</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Simple, Elegant Footer -->
-    <footer class="w-full max-w-6xl mx-auto px-6 py-8 relative z-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-stone-400 text-[11px] tracking-wider uppercase font-light">
-        <div>
-            <p>© 2026 Kagur Foundation.</p>
-        </div>
-        <!-- Tagline directly under the page for responsive layout context -->
-        <div class="text-center text-[7px] tracking-[0.12em] text-stone-500 max-w-xs sm:hidden block">
-            Karma &bull; Ahimsa &bull; Gyan &bull; Utthan &bull; Rashtra
-        </div>
-        <div class="flex space-x-6">
-            <a href="#" class="hover:text-white transition-colors">Vision</a>
-            <span class="text-stone-600">|</span>
-            <a href="#" class="hover:text-white transition-colors">Contact</a>
-        </div>
-    </footer>
+</main>
 
-    <script>
-        // --- PERSISTENT 15-DAY COUNTDOWN TIMER ---
-        function getCountdownTarget() {
-            const key = 'kagur_minimal_target_v3';
-            let target = localStorage.getItem(key);
-            
-            if (!target) {
-                // Creates a consistent 15 days target from the very first load
-                const fifteenDaysInMs = 15 * 24 * 60 * 60 * 1000;
-                const newTarget = Date.now() + fifteenDaysInMs;
-                localStorage.setItem(key, newTarget.toString());
-                return newTarget;
-            }
-            return parseInt(target, 10);
-        }
+<!-- ========================== FOOTER ========================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <a class="brand" href="#home" aria-label="Kagur Foundation home">
+          <img class="brand__mark" src="assets/img/logo-white.svg" alt="" width="34" height="34">
+          <span class="brand__name">KAGUR</span>
+        </a>
+        <p class="footer__tag">Karma · Ahimsa · Gyan · Utthan · Rashtra</p>
+        <p class="footer__blurb">A Gurugram-based charitable trust working for health, education, skill development, and women empowerment.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="footer__links">
+          <li>1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</li>
+          <li><a href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a></li>
+          <li><a href="tel:+919717333837">+91 97173 33837</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Kagur Foundation. All rights reserved.</span>
+      <!-- Social links placeholder -->
+      <div class="socials" aria-label="Social media">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3ZM5 10h3v9H5v-9Zm5 0h3v1.3c.5-.8 1.6-1.5 3-1.5 2.3 0 3 1.5 3 4V19h-3v-4.7c0-1.2-.4-1.8-1.4-1.8s-1.6.7-1.6 1.8V19h-3v-9Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-        const countdownTarget = getCountdownTarget();
-
-        function updateCountdown() {
-            const now = Date.now();
-            const difference = countdownTarget - now;
-
-            if (difference <= 0) {
-                document.getElementById('countdown-days').innerText = "00";
-                document.getElementById('countdown-hours').innerText = "00";
-                document.getElementById('countdown-minutes').innerText = "00";
-                document.getElementById('countdown-seconds').innerText = "00";
-                return;
-            }
-
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
-            document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('countdown-minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('countdown-seconds').innerText = String(seconds).padStart(2, '0');
-        }
-
-        // Initialize and tick countdown immediately
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // --- SUBSCRIPTION LOGIC ---
-        function handleSubscribe(e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('email-input');
-            const statusSuccess = document.getElementById('status-success');
-            const form = document.getElementById('subscribe-form');
-
-            const email = emailInput.value.trim();
-
-            if (email && email.includes('@')) {
-                form.classList.add('opacity-50', 'pointer-events-none');
-                
-                // Simulate saving state beautifully
-                setTimeout(() => {
-                    form.classList.add('hidden');
-                    statusSuccess.classList.remove('hidden');
-                    localStorage.setItem('kagur_minimal_subscribed_v3', 'true');
-                }, 400);
-            }
-        }
-
-        // Maintain subscription state upon reload
-        window.onload = function() {
-            if (localStorage.getItem('kagur_minimal_subscribed_v3') === 'true') {
-                document.getElementById('subscribe-form').classList.add('hidden');
-                document.getElementById('status-success').classList.remove('hidden');
-            }
-        }
-    </script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
