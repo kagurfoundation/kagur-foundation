@@ -1,20 +1,39 @@
+// Render Lucide icons
+if (window.lucide) { lucide.createIcons(); }
+
 // Mobile nav
 var toggle = document.getElementById('navToggle');
 var links = document.getElementById('navLinks');
+var iconOpen = document.getElementById('navIconOpen');
+var iconClose = document.getElementById('navIconClose');
 toggle.addEventListener('click', function(){
-  var open = links.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  var isOpen = links.classList.contains('max-h-[480px]');
+  links.classList.toggle('max-h-0', isOpen);
+  links.classList.toggle('max-h-[480px]', !isOpen);
+  iconOpen.classList.toggle('hidden', !isOpen);
+  iconClose.classList.toggle('hidden', isOpen);
+  toggle.setAttribute('aria-expanded', (!isOpen).toString());
 });
 links.addEventListener('click', function(e){
-  if (e.target.tagName === 'A'){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+  if (e.target.tagName === 'A'){
+    links.classList.remove('max-h-[480px]');
+    links.classList.add('max-h-0');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
 });
 
 // Nav shadow on scroll
 var nav = document.getElementById('nav');
-var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+var onScroll = function(){
+  var scrolled = window.scrollY > 8;
+  nav.classList.toggle('border-line-cool', scrolled);
+  nav.classList.toggle('shadow-[0_4px_24px_rgba(26,26,26,0.05)]', scrolled);
+};
 onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 
-// Scroll reveal
+// Scroll reveal — slight fade + rise as sections enter the viewport
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var items = document.querySelectorAll('.reveal');
 if (reduce || !('IntersectionObserver' in window)) {

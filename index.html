@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,18 @@
 <meta name="description" content="Kagur Foundation is a Gurugram-based charitable trust working on health, education, skill development, and women empowerment for underserved communities.">
 
 <!--
-  KAGUR FOUNDATION — v1 site (static, GitHub Pages ready)
+  KAGUR FOUNDATION — v2 site (static, GitHub Pages ready)
   ------------------------------------------------------------------
   DEVELOPER NOTES
-  • Structure: assets/css/style.css, assets/js/main.js, assets/img/*.
-    Fonts loaded from Google Fonts. No build step.
-  • Logo: placeholder SVGs at assets/img/logo.svg (dark line, for light
-    backgrounds) and assets/img/logo-white.svg (white line, for dark
-    backgrounds/footer). Swap both for the real logo when supplied.
+  • Styling: Tailwind CSS, compiled (not the CDN/Play script) so there's
+    no runtime JIT cost or console warning. Source: assets/css/input.css
+    → build with `npm run build` → assets/css/style.css (committed,
+    since GitHub Pages has no build step of its own).
+  • Icons: Lucide, loaded via CDN script + `data-lucide="name"` markers,
+    rendered to inline SVG by `lucide.createIcons()` in assets/js/main.js.
+  • Logo: assets/img/logo.svg (dark line, light backgrounds) and
+    assets/img/logo-white.svg (white line, dark backgrounds/footer) —
+    these are the brand mark, not Lucide icons.
   • Forms (Volunteer + Contact) POST to Formspree placeholder endpoints —
     replace FORMSPREE_ID. GitHub Pages can't process forms server-side.
   • Donate: replace PAYMENT_LINK with a real Razorpay/Instamojo link, and
@@ -28,352 +32,360 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
-<body>
+<body class="bg-white text-ink font-sans leading-relaxed antialiased selection:bg-orange/20">
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:bg-white focus:text-ink focus:px-4 focus:py-2.5 focus:rounded-lg" href="#main">Skip to content</a>
 
 <!-- ============================ NAV ============================ -->
-<header class="nav" id="nav">
-  <div class="wrap nav__inner">
-    <a class="brand" href="#home" aria-label="Kagur Foundation home">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-transparent transition-[border-color,box-shadow] duration-200" id="nav">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 flex items-center justify-between h-[72px]">
+    <a class="flex items-center gap-3 no-underline" href="#home" aria-label="Kagur Foundation home">
+      <img class="w-[34px] h-[34px] shrink-0" src="assets/img/logo.svg" alt="" width="34" height="34">
       <span>
-        <span class="brand__name">KAGUR</span>
-        <span class="brand__sub">Foundation</span>
+        <span class="block font-display font-black text-[1.28rem] text-ink tracking-tight leading-none">KAGUR</span>
+        <span class="block font-sans font-medium text-[.6rem] tracking-[.18em] uppercase text-muted mt-[3px]">Foundation</span>
       </span>
     </a>
 
-    <nav class="nav__links" id="navLinks" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#work">Our Work</a>
-      <a href="#involved">Get Involved</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-      <a class="btn btn--primary nav__cta" href="#donate">Donate</a>
+    <nav class="hidden md:flex items-center gap-7" aria-label="Primary">
+      <a class="font-sans font-medium text-[.94rem] text-ink hover:text-orange no-underline hover:no-underline" href="#about">About</a>
+      <a class="font-sans font-medium text-[.94rem] text-ink hover:text-orange no-underline hover:no-underline" href="#work">Our Work</a>
+      <a class="font-sans font-medium text-[.94rem] text-ink hover:text-orange no-underline hover:no-underline" href="#involved">Get Involved</a>
+      <a class="font-sans font-medium text-[.94rem] text-ink hover:text-orange no-underline hover:no-underline" href="#gallery">Gallery</a>
+      <a class="font-sans font-medium text-[.94rem] text-ink hover:text-orange no-underline hover:no-underline" href="#contact">Contact</a>
+      <a class="inline-flex items-center gap-2 font-sans font-semibold text-[.94rem] px-5 py-2.5 rounded-full bg-orange text-white no-underline hover:no-underline hover:bg-ember transition-colors" href="#donate">Donate</a>
     </nav>
 
-    <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <button class="md:hidden inline-flex p-2 text-ink" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <i data-lucide="menu" class="w-6 h-6" id="navIconOpen"></i>
+      <i data-lucide="x" class="w-6 h-6 hidden" id="navIconClose"></i>
     </button>
   </div>
+
+  <nav class="md:hidden absolute inset-x-0 top-[72px] flex flex-col items-stretch bg-white border-b border-line-cool overflow-hidden max-h-0 transition-[max-height] duration-300 ease-out px-5" id="navLinks" aria-label="Primary mobile">
+    <a class="py-3.5 border-b border-line-cool font-sans font-medium text-ink no-underline" href="#about">About</a>
+    <a class="py-3.5 border-b border-line-cool font-sans font-medium text-ink no-underline" href="#work">Our Work</a>
+    <a class="py-3.5 border-b border-line-cool font-sans font-medium text-ink no-underline" href="#involved">Get Involved</a>
+    <a class="py-3.5 border-b border-line-cool font-sans font-medium text-ink no-underline" href="#gallery">Gallery</a>
+    <a class="py-3.5 border-b border-line-cool font-sans font-medium text-ink no-underline" href="#contact">Contact</a>
+    <a class="inline-flex items-center justify-center gap-2 font-sans font-semibold px-5 py-2.5 my-3.5 rounded-full bg-orange text-white no-underline" href="#donate">Donate</a>
+  </nav>
 </header>
 
 <main id="main">
 
 <!-- ============================ HERO ============================ -->
-<section class="hero" id="home">
-  <div class="wrap hero__inner">
-    <div class="hero__text">
-      <div class="hero__eyebrow">
-        <span>Gurugram</span><span>Charitable Trust</span><span>Est. 2026</span>
+<section class="bg-gradient-to-b from-white to-sand overflow-hidden" id="home">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[1.15fr_.85fr] gap-8 md:gap-16 items-center py-11 md:py-16 lg:py-20">
+    <div>
+      <div class="flex flex-wrap items-center gap-x-3.5 gap-y-2 mb-5">
+        <span class="font-sans font-semibold text-[.72rem] tracking-[.16em] uppercase text-slate">Gurugram</span>
+        <span class="font-sans font-semibold text-[.72rem] tracking-[.16em] uppercase text-slate before:content-['·'] before:text-orange before:font-extrabold before:mr-3.5">Charitable Trust</span>
+        <span class="font-sans font-semibold text-[.72rem] tracking-[.16em] uppercase text-slate before:content-['·'] before:text-orange before:font-extrabold before:mr-3.5">Est. 2026</span>
       </div>
-      <h1>Karma<span class="dot">·</span>Ahimsa<span class="dot">·</span>Gyan<span class="dot">·</span>Utthan<span class="dot">·</span>Rashtra</h1>
-      <p class="hero__values-gloss">Action · Compassion · Knowledge · Upliftment · Nation — the five words we are named for.</p>
-      <p class="hero__lede">Kagur Foundation is a Gurugram-based charitable trust working towards better health, education, skill development, and empowerment for underserved communities.</p>
-      <div class="hero__cta">
-        <a class="btn btn--primary" href="#donate">Donate Now</a>
-        <a class="btn btn--ghost" href="#volunteer">Volunteer With Us</a>
+      <h1 class="font-display font-black text-[clamp(2.3rem,5.4vw,4rem)] leading-[1.05] tracking-tight text-ink">Karma<span class="text-orange px-1 font-extrabold">·</span>Ahimsa<span class="text-orange px-1 font-extrabold">·</span>Gyan<span class="text-orange px-1 font-extrabold">·</span>Utthan<span class="text-orange px-1 font-extrabold">·</span>Rashtra</h1>
+      <p class="font-sans font-medium text-slate text-[clamp(.9rem,1.3vw,1rem)] tracking-wide my-3.5">Action · Compassion · Knowledge · Upliftment · Nation — the five words we are named for.</p>
+      <p class="text-[clamp(1.05rem,1.5vw,1.24rem)] text-slate max-w-[52ch] mb-7">Kagur Foundation is a Gurugram-based charitable trust working towards better health, education, skill development, and empowerment for underserved communities.</p>
+      <div class="flex flex-wrap gap-3.5">
+        <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white no-underline hover:no-underline hover:bg-ember hover:-translate-y-0.5 transition-all" href="#donate">Donate Now</a>
+        <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full border-[1.5px] border-ink text-ink no-underline hover:no-underline hover:bg-ink hover:text-white hover:-translate-y-0.5 transition-all" href="#volunteer">Volunteer With Us</a>
       </div>
     </div>
 
     <!-- SIGNATURE: the name spelled out by its values -->
-    <aside class="acrostic" aria-label="What the name Kagur stands for">
-      <p class="acrostic__cap">The name, letter by letter</p>
-      <div class="acrostic__row">
-        <span class="acrostic__letter">K</span>
-        <span><span class="acrostic__word"><b>K</b>arma<span class="acrostic__deva">कर्म</span></span><span class="acrostic__mean">Action &amp; duty</span></span>
+    <aside class="bg-white border border-line rounded-2xl p-5 sm:p-7 shadow-[0_30px_60px_-30px_rgba(184,70,0,0.28)]" aria-label="What the name Kagur stands for">
+      <p class="font-sans font-semibold text-[.68rem] tracking-[.18em] uppercase text-muted mb-3.5">The name, letter by letter</p>
+      <div class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5">
+        <span class="font-display font-black text-[clamp(2rem,3.4vw,2.7rem)] text-orange leading-[.8] w-[1.1ch] text-center">K</span>
+        <span><span class="font-display font-extrabold text-[1.05rem] text-ink tracking-wide"><b class="text-orange font-extrabold">K</b>arma<span class="font-deva font-normal text-slate text-[.92rem] ml-2">कर्म</span></span><span class="block font-sans font-medium text-[.86rem] text-slate mt-0.5">Action &amp; duty</span></span>
       </div>
-      <div class="acrostic__row">
-        <span class="acrostic__letter">A</span>
-        <span><span class="acrostic__word"><b>A</b>himsa<span class="acrostic__deva">अहिंसा</span></span><span class="acrostic__mean">Non-violence &amp; compassion</span></span>
+      <div class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-t border-line">
+        <span class="font-display font-black text-[clamp(2rem,3.4vw,2.7rem)] text-orange leading-[.8] w-[1.1ch] text-center">A</span>
+        <span><span class="font-display font-extrabold text-[1.05rem] text-ink tracking-wide"><b class="text-orange font-extrabold">A</b>himsa<span class="font-deva font-normal text-slate text-[.92rem] ml-2">अहिंसा</span></span><span class="block font-sans font-medium text-[.86rem] text-slate mt-0.5">Non-violence &amp; compassion</span></span>
       </div>
-      <div class="acrostic__row">
-        <span class="acrostic__letter">G</span>
-        <span><span class="acrostic__word"><b>G</b>yan<span class="acrostic__deva">ज्ञान</span></span><span class="acrostic__mean">Knowledge</span></span>
+      <div class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-t border-line">
+        <span class="font-display font-black text-[clamp(2rem,3.4vw,2.7rem)] text-orange leading-[.8] w-[1.1ch] text-center">G</span>
+        <span><span class="font-display font-extrabold text-[1.05rem] text-ink tracking-wide"><b class="text-orange font-extrabold">G</b>yan<span class="font-deva font-normal text-slate text-[.92rem] ml-2">ज्ञान</span></span><span class="block font-sans font-medium text-[.86rem] text-slate mt-0.5">Knowledge</span></span>
       </div>
-      <div class="acrostic__row">
-        <span class="acrostic__letter">U</span>
-        <span><span class="acrostic__word"><b>U</b>tthan<span class="acrostic__deva">उत्थान</span></span><span class="acrostic__mean">Upliftment</span></span>
+      <div class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-t border-line">
+        <span class="font-display font-black text-[clamp(2rem,3.4vw,2.7rem)] text-orange leading-[.8] w-[1.1ch] text-center">U</span>
+        <span><span class="font-display font-extrabold text-[1.05rem] text-ink tracking-wide"><b class="text-orange font-extrabold">U</b>tthan<span class="font-deva font-normal text-slate text-[.92rem] ml-2">उत्थान</span></span><span class="block font-sans font-medium text-[.86rem] text-slate mt-0.5">Upliftment</span></span>
       </div>
-      <div class="acrostic__row">
-        <span class="acrostic__letter">R</span>
-        <span><span class="acrostic__word"><b>R</b>ashtra<span class="acrostic__deva">राष्ट्र</span></span><span class="acrostic__mean">Nation</span></span>
+      <div class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-t border-line">
+        <span class="font-display font-black text-[clamp(2rem,3.4vw,2.7rem)] text-orange leading-[.8] w-[1.1ch] text-center">R</span>
+        <span><span class="font-display font-extrabold text-[1.05rem] text-ink tracking-wide"><b class="text-orange font-extrabold">R</b>ashtra<span class="font-deva font-normal text-slate text-[.92rem] ml-2">राष्ट्र</span></span><span class="block font-sans font-medium text-[.86rem] text-slate mt-0.5">Nation</span></span>
       </div>
     </aside>
   </div>
 </section>
 
 <!-- ======================= MISSION STRIP ======================= -->
-<section class="section mission">
-  <div class="wrap mission__grid reveal">
+<section class="py-14 md:py-20 border-b border-line-cool">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-5 md:gap-16 items-start reveal">
     <div>
-      <p class="eyebrow">Who we are</p>
-      <h2>A young Trust, built around five old ideas.</h2>
+      <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Who we are</p>
+      <h2 class="font-display font-extrabold text-[clamp(1.6rem,3vw,2.3rem)] text-ink">A young Trust, built around five old ideas.</h2>
     </div>
-    <div class="mission__body">
-      <p>Founded in 2026 and based in Gurugram, Kagur Foundation exists to promote social welfare, human development, and inclusive growth — with a focus on health, education, skill development for students, and the empowerment of women in underserved and marginalized communities.</p>
-      <p>We are newly established, and we believe the way to earn trust is to be plain about who we are and what we do. <span class="tbc">Origin story to confirm</span></p>
+    <div>
+      <p class="text-[1.08rem] text-slate mb-4">Founded in 2026 and based in Gurugram, Kagur Foundation exists to promote social welfare, human development, and inclusive growth — with a focus on health, education, skill development for students, and the empowerment of women in underserved and marginalized communities.</p>
+      <p class="text-[1.08rem] text-slate">We are newly established, and we believe the way to earn trust is to be plain about who we are and what we do. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Origin story to confirm</span></p>
     </div>
   </div>
 </section>
 
 <!-- ========================= PILLARS ========================= -->
-<section class="section section--sand" id="work-overview">
-  <div class="wrap">
-    <div class="pillars__head reveal">
+<section class="py-16 md:py-24 lg:py-28 bg-sand" id="work-overview">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <div class="flex justify-between items-end gap-6 flex-wrap mb-11 reveal">
       <div>
-        <p class="eyebrow">Our Work · Seva</p>
-        <h2 class="section-title">Four pillars of service.</h2>
+        <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Our Work · Seva</p>
+        <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink">Four pillars of service.</h2>
       </div>
-      <a class="btn btn--ghost" href="#work">See how each works <span class="arrow">→</span></a>
+      <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full border-[1.5px] border-ink text-ink no-underline hover:no-underline hover:bg-ink hover:text-white hover:-translate-y-0.5 transition-all" href="#work">See how each works <span>→</span></a>
     </div>
 
-    <div class="pillars__grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <!-- Health -->
-      <article class="pillar reveal">
-        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M24 42S6 30 6 18a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12-18 24-18 24Z"/>
-          <path d="M24 20v10M19 25h10"/>
-        </svg>
-        <h3>Health-Related Activities</h3>
-        <p>Health check-up camps, blood donation camps, eye camps, and medical awareness and support for underserved communities.</p>
-        <a class="pillar__link" href="#work-health">Learn more →</a>
+      <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
+        <i data-lucide="heart-pulse" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
+        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Health-Related Activities</h3>
+        <p class="text-[.95rem] text-slate mb-4 flex-1">Health check-up camps, blood donation camps, eye camps, and medical awareness and support for underserved communities.</p>
+        <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-health">Learn more →</a>
       </article>
 
       <!-- Skill -->
-      <article class="pillar reveal">
-        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M24 6l4.2 9 9.8 1.2-7.2 6.7 2 9.8L24 33l-8.8 5.7 2-9.8L10 22.2 19.8 21 24 6Z"/>
-        </svg>
-        <h3>Skill Development of Students</h3>
-        <p>Vocational training, digital literacy, personality development, and career-readiness programs for students.</p>
-        <a class="pillar__link" href="#work-skill">Learn more →</a>
+      <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
+        <i data-lucide="star" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
+        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Skill Development of Students</h3>
+        <p class="text-[.95rem] text-slate mb-4 flex-1">Vocational training, digital literacy, personality development, and career-readiness programs for students.</p>
+        <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-skill">Learn more →</a>
       </article>
 
       <!-- Education -->
-      <article class="pillar reveal">
-        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 16 24 8l18 8-18 8L6 16Z"/>
-          <path d="M14 20v9c0 2 4.5 4 10 4s10-2 10-4v-9"/>
-          <path d="M42 16v9"/>
-        </svg>
-        <h3>Education</h3>
-        <p>Scholarships, learning materials, and support for schools, coaching, and literacy for underprivileged children and youth.</p>
-        <a class="pillar__link" href="#work-education">Learn more →</a>
+      <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
+        <i data-lucide="graduation-cap" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
+        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Education</h3>
+        <p class="text-[.95rem] text-slate mb-4 flex-1">Scholarships, learning materials, and support for schools, coaching, and literacy for underprivileged children and youth.</p>
+        <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-education">Learn more →</a>
       </article>
 
       <!-- Women -->
-      <article class="pillar reveal">
-        <svg class="pillar__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="24" cy="15" r="8"/>
-          <path d="M24 23v14M17 30h14M24 37l-4 5M24 37l4 5"/>
-        </svg>
-        <h3>Women Empowerment</h3>
-        <p>Awareness, vocational training, self-help groups, and support for the social and economic empowerment of women and girls.</p>
-        <a class="pillar__link" href="#work-women">Learn more →</a>
+      <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
+        <i data-lucide="venus" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
+        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Women Empowerment</h3>
+        <p class="text-[.95rem] text-slate mb-4 flex-1">Awareness, vocational training, self-help groups, and support for the social and economic empowerment of women and girls.</p>
+        <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-women">Learn more →</a>
       </article>
     </div>
 
     <!-- Dog healthcare — brief mention, not a pillar (per brief §4.3) -->
-    <div class="dog-note reveal">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="14" cy="16" r="3.2"/><circle cx="24" cy="12" r="3.2"/><circle cx="34" cy="16" r="3.2"/><circle cx="40" cy="26" r="3.2"/>
-        <path d="M24 22c-5 0-9 5-9 9 0 4 4 5 9 5s9-1 9-5c0-4-4-9-9-9Z"/>
-      </svg>
-      <p><strong>Also active — Dog Healthcare.</strong> Alongside our four pillars, the Foundation supports medical treatment and welfare for street and shelter dogs. <span class="tbc">Copy &amp; photo to confirm</span></p>
+    <div class="mt-6.5 flex gap-4 items-start bg-sand border border-dashed border-line rounded-xl px-5.5 py-4.5 reveal">
+      <i data-lucide="dog" class="w-[26px] h-[26px] text-orange shrink-0 mt-0.5 stroke-[1.75]"></i>
+      <p class="text-[.95rem] text-slate"><strong class="text-ink">Also active — Dog Healthcare.</strong> Alongside our four pillars, the Foundation supports medical treatment and welfare for street and shelter dogs. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Copy &amp; photo to confirm</span></p>
     </div>
   </div>
 </section>
 
 <!-- ====================== OUR WORK DETAIL ====================== -->
-<section class="section" id="work">
-  <div class="wrap">
-    <p class="eyebrow reveal">In detail</p>
-    <h2 class="section-title reveal" style="margin-bottom:44px;">What each pillar means on the ground.</h2>
+<section class="py-16 md:py-24 lg:py-28" id="work">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">In detail</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink mb-11 reveal">What each pillar means on the ground.</h2>
 
     <!-- Health -->
-    <div class="work-item reveal" id="work-health">
+    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 reveal" id="work-health">
       <div>
-        <div class="work-item__label"><span class="work-item__num">01</span><h3>Health-Related Activities</h3></div>
+        <div class="flex items-center gap-3.5">
+          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">01</span>
+          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Health-Related Activities</h3>
+        </div>
       </div>
-      <dl class="work-item__detail">
-        <dt>What we do</dt>
-        <dd>Health check-up, blood, and eye camps; medical awareness, preventive healthcare, sanitation and nutrition drives; maternal, child, adolescent, and mental-health awareness. We help needy individuals access basic medical services, medicines, diagnostics, and treatment — working with hospitals, doctors, and healthcare professionals.</dd>
-        <dt>Who we serve</dt>
-        <dd>Underserved and economically weaker communities.</dd>
-        <dt>How you can help</dt>
-        <dd class="help-chips"><span>Sponsor a health camp</span><span>Volunteer as a medical professional</span><span>Donate medical supplies</span></dd>
+      <dl>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+        <dd class="text-slate mb-5">Health check-up, blood, and eye camps; medical awareness, preventive healthcare, sanitation and nutrition drives; maternal, child, adolescent, and mental-health awareness. We help needy individuals access basic medical services, medicines, diagnostics, and treatment — working with hospitals, doctors, and healthcare professionals.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+        <dd class="text-slate mb-5">Underserved and economically weaker communities.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a health camp</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a medical professional</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate medical supplies</span></dd>
       </dl>
     </div>
 
     <!-- Skill -->
-    <div class="work-item reveal" id="work-skill">
+    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 border-t border-line reveal" id="work-skill">
       <div>
-        <div class="work-item__label"><span class="work-item__num">02</span><h3>Skill Development of Students</h3></div>
+        <div class="flex items-center gap-3.5">
+          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">02</span>
+          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Skill Development of Students</h3>
+        </div>
       </div>
-      <dl class="work-item__detail">
-        <dt>What we do</dt>
-        <dd>Vocational and technical training, digital literacy, and career-oriented workshops; personality, communication, entrepreneurship, and leadership development; computer education, language and financial literacy, workplace readiness, internship guidance, mentorship, and exposure visits — often with educational institutions, training centres, and industry experts.</dd>
-        <dt>Who we serve</dt>
-        <dd>Students, particularly from underprivileged backgrounds.</dd>
-        <dt>How you can help</dt>
-        <dd class="help-chips"><span>Sponsor a student's training</span><span>Volunteer as a mentor/trainer</span><span>Donate equipment</span></dd>
+      <dl>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+        <dd class="text-slate mb-5">Vocational and technical training, digital literacy, and career-oriented workshops; personality, communication, entrepreneurship, and leadership development; computer education, language and financial literacy, workplace readiness, internship guidance, mentorship, and exposure visits — often with educational institutions, training centres, and industry experts.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+        <dd class="text-slate mb-5">Students, particularly from underprivileged backgrounds.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a student's training</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a mentor/trainer</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate equipment</span></dd>
       </dl>
     </div>
 
     <!-- Education -->
-    <div class="work-item reveal" id="work-education">
+    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 border-t border-line reveal" id="work-education">
       <div>
-        <div class="work-item__label"><span class="work-item__num">03</span><h3>Education</h3></div>
+        <div class="flex items-center gap-3.5">
+          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">03</span>
+          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Education</h3>
+        </div>
       </div>
-      <dl class="work-item__detail">
-        <dt>What we do</dt>
-        <dd>Scholarships, books, uniforms, stationery, and digital learning materials; support for schools, coaching centres, libraries, and remedial education; literacy and adult/non-formal education; and support for underprivileged children, school dropouts, and differently-abled learners.</dd>
-        <dt>Who we serve</dt>
-        <dd>Children, youth, and disadvantaged groups in rural and urban communities.</dd>
-        <dt>How you can help</dt>
-        <dd class="help-chips"><span>Sponsor a student's education</span><span>Donate books/materials</span><span>Volunteer as a teacher/tutor</span></dd>
+      <dl>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+        <dd class="text-slate mb-5">Scholarships, books, uniforms, stationery, and digital learning materials; support for schools, coaching centres, libraries, and remedial education; literacy and adult/non-formal education; and support for underprivileged children, school dropouts, and differently-abled learners.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+        <dd class="text-slate mb-5">Children, youth, and disadvantaged groups in rural and urban communities.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a student's education</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate books/materials</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a teacher/tutor</span></dd>
       </dl>
     </div>
 
     <!-- Women -->
-    <div class="work-item reveal" id="work-women">
+    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 border-t border-line reveal" id="work-women">
       <div>
-        <div class="work-item__label"><span class="work-item__num">04</span><h3>Women Empowerment</h3></div>
+        <div class="flex items-center gap-3.5">
+          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">04</span>
+          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Women Empowerment</h3>
+        </div>
       </div>
-      <dl class="work-item__detail">
-        <dt>What we do</dt>
-        <dd>Awareness on women's rights, legal literacy, health, hygiene, and safety; vocational training and self-employment opportunities; support for self-help groups and livelihood initiatives; and education, counselling, and capacity-building for women and girls.</dd>
-        <dt>Who we serve</dt>
-        <dd>Women and girls in underserved communities.</dd>
-        <dt>How you can help</dt>
-        <dd class="help-chips"><span>Sponsor a training program</span><span>Volunteer as a mentor/trainer</span><span>Support a self-help group</span></dd>
+      <dl>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+        <dd class="text-slate mb-5">Awareness on women's rights, legal literacy, health, hygiene, and safety; vocational training and self-employment opportunities; support for self-help groups and livelihood initiatives; and education, counselling, and capacity-building for women and girls.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+        <dd class="text-slate mb-5">Women and girls in underserved communities.</dd>
+        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a training program</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a mentor/trainer</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Support a self-help group</span></dd>
       </dl>
     </div>
   </div>
 </section>
 
 <!-- ======================= IMPACT STRIP ======================= -->
-<section class="section section--ink">
-  <div class="wrap reveal">
-    <p class="eyebrow" style="color:var(--orange);">Our impact</p>
-    <h2 class="section-title" style="color:#fff;">The numbers, once the work adds up.</h2>
+<section class="py-16 md:py-24 lg:py-28 bg-ink text-[#F3EDE6]">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 reveal">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Our impact</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-white">The numbers, once the work adds up.</h2>
     <!-- Placeholder counters — replace em-dashes with real figures (brief §8) -->
-    <div class="impact__grid">
-      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">Health camps conducted</div></div>
-      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">Students supported</div></div>
-      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">Women reached</div></div>
-      <div class="impact__cell"><div class="impact__num">—</div><div class="impact__label">People reached overall</div></div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-0.5 mt-9 border border-white/15 rounded-2xl overflow-hidden">
+      <div class="p-8 px-6 border-r border-b lg:border-b-0 border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Health camps conducted</div></div>
+      <div class="p-8 px-6 border-b lg:border-b-0 lg:border-r border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Students supported</div></div>
+      <div class="p-8 px-6 border-r border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Women reached</div></div>
+      <div class="p-8 px-6"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">People reached overall</div></div>
     </div>
-    <p style="color:#9F978D; font-size:.9rem; margin-top:16px;">As a Foundation founded in 2026, we'll publish real figures here as our first programs complete. <span class="tbc">Data to confirm</span></p>
+    <p class="text-[#9F978D] text-[.9rem] mt-4">As a Foundation founded in 2026, we'll publish real figures here as our first programs complete. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Data to confirm</span></p>
   </div>
 </section>
 
 <!-- ========================== ABOUT ========================== -->
-<section class="section" id="about">
-  <div class="wrap">
-    <p class="eyebrow reveal">About us</p>
-    <h2 class="section-title reveal" style="margin-bottom:40px;">Our story, mission, and the people behind the Trust.</h2>
+<section class="py-16 md:py-24 lg:py-28" id="about">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">About us</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink mb-10 reveal">Our story, mission, and the people behind the Trust.</h2>
 
-    <div class="about__grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
       <div class="reveal">
-        <div class="mv">
-          <h4>Our Mission</h4>
-          <p>To promote social welfare, human development, and inclusive growth — with special emphasis on health improvement, educational advancement, student skill development, and the empowerment of women — for underserved and marginalized communities.</p>
+        <div class="bg-white border border-line-cool rounded-2xl px-7 py-6.5 mb-4.5">
+          <h4 class="text-[.78rem] tracking-[.16em] uppercase text-orange font-sans font-semibold mb-2.5">Our Mission</h4>
+          <p class="text-slate">To promote social welfare, human development, and inclusive growth — with special emphasis on health improvement, educational advancement, student skill development, and the empowerment of women — for underserved and marginalized communities.</p>
         </div>
-        <div class="mv">
-          <h4>Our Vision <span class="tbc">To confirm</span></h4>
-          <p>A vision statement in the Foundation's own words will sit here once finalized.</p>
+        <div class="bg-white border border-line-cool rounded-2xl px-7 py-6.5 mb-4.5">
+          <h4 class="text-[.78rem] tracking-[.16em] uppercase text-orange font-sans font-semibold mb-2.5">Our Vision <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></h4>
+          <p class="text-slate">A vision statement in the Foundation's own words will sit here once finalized.</p>
         </div>
-        <div class="mv">
-          <h4>Our Story <span class="tbc">To confirm</span></h4>
-          <p>The meaning behind “Kagur,” and why the Foundation was founded in 2026 around Karma, Ahimsa, Gyan, Utthan, and Rashtra, will be told here.</p>
+        <div class="bg-white border border-line-cool rounded-2xl px-7 py-6.5">
+          <h4 class="text-[.78rem] tracking-[.16em] uppercase text-orange font-sans font-semibold mb-2.5">Our Story <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></h4>
+          <p class="text-slate">The meaning behind "Kagur," and why the Foundation was founded in 2026 around Karma, Ahimsa, Gyan, Utthan, and Rashtra, will be told here.</p>
         </div>
       </div>
 
       <div class="reveal">
-        <p class="eyebrow">The five values we're named for</p>
-        <ul class="values-list">
-          <li><span class="vl-word"><span class="vl-init">K</span>arma<span class="vl-deva">कर्म</span></span><span class="vl-mean">Action &amp; duty — showing up and doing the work.</span></li>
-          <li><span class="vl-word"><span class="vl-init">A</span>himsa<span class="vl-deva">अहिंसा</span></span><span class="vl-mean">Non-violence &amp; compassion in all we do.</span></li>
-          <li><span class="vl-word"><span class="vl-init">G</span>yan<span class="vl-deva">ज्ञान</span></span><span class="vl-mean">Knowledge — education as a way up.</span></li>
-          <li><span class="vl-word"><span class="vl-init">U</span>tthan<span class="vl-deva">उत्थान</span></span><span class="vl-mean">Upliftment of those left behind.</span></li>
-          <li><span class="vl-word"><span class="vl-init">R</span>ashtra<span class="vl-deva">राष्ट्र</span></span><span class="vl-mean">Nation — service to the wider community.</span></li>
+        <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">The five values we're named for</p>
+        <ul class="mt-2">
+          <li class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-b border-line"><span class="font-display font-extrabold text-[1.1rem]"><span class="text-orange">K</span>arma<span class="font-deva text-muted text-[.9rem] ml-2">कर्म</span></span><span class="font-sans font-medium text-slate">Action &amp; duty — showing up and doing the work.</span></li>
+          <li class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-b border-line"><span class="font-display font-extrabold text-[1.1rem]"><span class="text-orange">A</span>himsa<span class="font-deva text-muted text-[.9rem] ml-2">अहिंसा</span></span><span class="font-sans font-medium text-slate">Non-violence &amp; compassion in all we do.</span></li>
+          <li class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-b border-line"><span class="font-display font-extrabold text-[1.1rem]"><span class="text-orange">G</span>yan<span class="font-deva text-muted text-[.9rem] ml-2">ज्ञान</span></span><span class="font-sans font-medium text-slate">Knowledge — education as a way up.</span></li>
+          <li class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5 border-b border-line"><span class="font-display font-extrabold text-[1.1rem]"><span class="text-orange">U</span>tthan<span class="font-deva text-muted text-[.9rem] ml-2">उत्थान</span></span><span class="font-sans font-medium text-slate">Upliftment of those left behind.</span></li>
+          <li class="grid grid-cols-[auto_1fr] gap-4 items-baseline py-3.5"><span class="font-display font-extrabold text-[1.1rem]"><span class="text-orange">R</span>ashtra<span class="font-deva text-muted text-[.9rem] ml-2">राष्ट्र</span></span><span class="font-sans font-medium text-slate">Nation — service to the wider community.</span></li>
         </ul>
-        <p style="font-size:.86rem; color:var(--muted); margin-top:14px;">Short framing shown above is a draft. <span class="tbc">Definitions to confirm</span></p>
+        <p class="text-[.86rem] text-muted mt-3.5">Short framing shown above is a draft. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Definitions to confirm</span></p>
       </div>
     </div>
 
     <!-- Trustees -->
-    <div style="margin-top:56px;" class="reveal">
-      <p class="eyebrow">Our Trustees</p>
-      <div class="trustees__grid">
-        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">K</div><div class="trustee__name">Kartik</div><div class="trustee__role">Trustee · Authorised Signatory</div></div>
-        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">RS</div><div class="trustee__name">Ruchika Singh</div><div class="trustee__role">Trustee</div></div>
-        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">UR</div><div class="trustee__name">Usha Rani</div><div class="trustee__role">Authorised Trustee</div></div>
-        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">GS</div><div class="trustee__name">Gobind Saran</div><div class="trustee__role">Trustee</div></div>
-        <div class="trustee"><div class="trustee__avatar" aria-hidden="true">AS</div><div class="trustee__name">Ankita Saran</div><div class="trustee__role">Trustee</div></div>
+    <div class="mt-14 reveal">
+      <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Our Trustees</p>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mt-4">
+        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">K</div><div class="font-display font-extrabold text-[1rem] text-ink">Kartik</div><div class="text-[.82rem] text-slate">Trustee · Authorised Signatory</div></div>
+        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">RS</div><div class="font-display font-extrabold text-[1rem] text-ink">Ruchika Singh</div><div class="text-[.82rem] text-slate">Trustee</div></div>
+        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">UR</div><div class="font-display font-extrabold text-[1rem] text-ink">Usha Rani</div><div class="text-[.82rem] text-slate">Authorised Trustee</div></div>
+        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">GS</div><div class="font-display font-extrabold text-[1rem] text-ink">Gobind Saran</div><div class="text-[.82rem] text-slate">Trustee</div></div>
+        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">AS</div><div class="font-display font-extrabold text-[1rem] text-ink">Ankita Saran</div><div class="text-[.82rem] text-slate">Trustee</div></div>
       </div>
-      <p style="font-size:.86rem; color:var(--muted); margin-top:16px; text-align:center;">Photos &amp; short bios to be added. <span class="tbc">To confirm</span></p>
+      <p class="text-[.86rem] text-muted mt-4 text-center">Photos &amp; short bios to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></p>
     </div>
 
     <!-- Legal / transparency -->
-    <div class="legal reveal">
-      <p class="eyebrow" style="margin-bottom:18px;">Trust registration &amp; transparency</p>
-      <dl class="legal__grid">
-        <div><dt>Registered name</dt><dd>Kagur Foundation (Charitable Trust)</dd></div>
-        <div><dt>Founding year</dt><dd>2026</dd></div>
-        <div><dt>Registered address</dt><dd>1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</dd></div>
-        <div><dt>80G / 12A status</dt><dd>To confirm <span class="tbc">Pending</span></dd></div>
-        <div><dt>PAN (for donation receipts)</dt><dd>To confirm <span class="tbc">Pending</span></dd></div>
-        <div><dt>Accounts</dt><dd>Newly established in 2026; FY 2025–26 filed as NIL.</dd></div>
+    <div class="bg-white border border-line-cool rounded-2xl p-6 sm:p-8 mt-6 reveal">
+      <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4.5">Trust registration &amp; transparency</p>
+      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Registered name</dt><dd class="text-ink font-medium">Kagur Foundation (Charitable Trust)</dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Founding year</dt><dd class="text-ink font-medium">2026</dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Registered address</dt><dd class="text-ink font-medium">1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">80G / 12A status</dt><dd class="text-ink font-medium">To confirm <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Pending</span></dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">PAN (for donation receipts)</dt><dd class="text-ink font-medium">To confirm <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Pending</span></dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Accounts</dt><dd class="text-ink font-medium">Newly established in 2026; FY 2025–26 filed as NIL.</dd></div>
       </dl>
     </div>
   </div>
 </section>
 
 <!-- ======================= GET INVOLVED ======================= -->
-<section class="section section--sand" id="involved">
-  <div class="wrap">
-    <p class="eyebrow reveal">Get involved</p>
-    <h2 class="section-title reveal" style="margin-bottom:40px;">Give, volunteer, or partner with us.</h2>
+<section class="py-16 md:py-24 lg:py-28 bg-sand" id="involved">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">Get involved</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink mb-10 reveal">Give, volunteer, or partner with us.</h2>
 
-    <div class="involved__grid">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-6">
       <!-- Donate -->
-      <div class="card card--donate reveal" id="donate">
-        <h3>Donate</h3>
-        <p>Your gift funds real work across our pillars. Suggested amounts below are indicative. <span class="tbc">Figures to confirm</span></p>
-        <ul class="fund-list">
-          <li><span class="amt">₹500</span><span>Can fund a health-camp check-up for one person.</span></li>
-          <li><span class="amt">₹2,000</span><span>Can support a student's skill-development training.</span></li>
-          <li><span class="amt">₹5,000</span><span>Can help equip a woman's self-help group initiative.</span></li>
+      <div class="bg-white border border-line-cool border-t-4 border-t-orange rounded-2xl p-6 sm:p-8 reveal" id="donate">
+        <h3 class="text-[1.4rem] font-display font-extrabold text-ink mb-2">Donate</h3>
+        <p class="text-slate">Your gift funds real work across our pillars. Suggested amounts below are indicative. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Figures to confirm</span></p>
+        <ul class="my-4.5">
+          <li class="flex gap-3.5 items-baseline py-2.5 border-b border-line-cool"><span class="font-display font-extrabold text-orange text-[1.05rem] whitespace-nowrap">₹500</span><span class="text-slate">Can fund a health-camp check-up for one person.</span></li>
+          <li class="flex gap-3.5 items-baseline py-2.5 border-b border-line-cool"><span class="font-display font-extrabold text-orange text-[1.05rem] whitespace-nowrap">₹2,000</span><span class="text-slate">Can support a student's skill-development training.</span></li>
+          <li class="flex gap-3.5 items-baseline py-2.5"><span class="font-display font-extrabold text-orange text-[1.05rem] whitespace-nowrap">₹5,000</span><span class="text-slate">Can help equip a woman's self-help group initiative.</span></li>
         </ul>
-        <a class="btn btn--primary" href="#donate" data-pay-link>Donate Now</a>
-        <div class="pay-methods">
-          <span>Online / UPI</span><span>Bank transfer</span><span>Cheque</span>
+        <!-- DEV: replace href below with a real Razorpay/Instamojo PAYMENT_LINK -->
+        <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white no-underline hover:no-underline hover:bg-ember hover:-translate-y-0.5 transition-all" href="#donate" data-pay-link>Donate Now</a>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Online / UPI</span><span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Bank transfer</span><span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Cheque</span>
         </div>
-        <p style="font-size:.84rem; color:var(--muted); margin:16px 0 0;">
-          Payment gateway, bank &amp; UPI details, and 80G receipt info to be added. <span class="tbc">To confirm</span>
+        <p class="text-[.84rem] text-muted mt-4">
+          Payment gateway, bank &amp; UPI details, and 80G receipt info to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span>
         </p>
-        <!-- DEV: replace href above with a real Razorpay/Instamojo PAYMENT_LINK -->
       </div>
 
       <!-- Volunteer -->
-      <div class="card reveal" id="volunteer">
-        <h3>Volunteer</h3>
-        <p>Help out at health camps, teach or mentor, facilitate training, support women's programs, or lend a hand with admin and digital work.</p>
+      <div class="bg-white border border-line-cool rounded-2xl p-6 sm:p-8 reveal" id="volunteer">
+        <h3 class="text-[1.4rem] font-display font-extrabold text-ink mb-2">Volunteer</h3>
+        <p class="text-slate">Help out at health camps, teach or mentor, facilitate training, support women's programs, or lend a hand with admin and digital work.</p>
         <!-- DEV: set action to your Formspree endpoint, e.g. https://formspree.io/f/FORMSPREE_ID -->
-        <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
-          <div class="field-row">
-            <div class="field"><label for="v-name">Name</label><input id="v-name" name="name" type="text" required autocomplete="name"></div>
-            <div class="field"><label for="v-phone">Phone</label><input id="v-phone" name="phone" type="tel" required autocomplete="tel"></div>
+        <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate class="mt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="v-name">Name</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-sand focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 focus:bg-white transition-colors" id="v-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="v-phone">Phone</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-sand focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 focus:bg-white transition-colors" id="v-phone" name="phone" type="tel" required autocomplete="tel"></div>
           </div>
-          <div class="field"><label for="v-email">Email</label><input id="v-email" name="email" type="email" required autocomplete="email"></div>
-          <div class="field">
-            <label for="v-interest">Area of interest</label>
-            <select id="v-interest" name="area_of_interest">
+          <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="v-email">Email</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-sand focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 focus:bg-white transition-colors" id="v-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="mb-4">
+            <label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="v-interest">Area of interest</label>
+            <select class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-sand focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 focus:bg-white transition-colors" id="v-interest" name="area_of_interest">
               <option value="">Choose one…</option>
               <option>Health camps</option>
               <option>Teaching / mentoring</option>
@@ -382,83 +394,83 @@
               <option>Admin / digital support</option>
             </select>
           </div>
-          <div class="field"><label for="v-avail">Availability</label><input id="v-avail" name="availability" type="text" placeholder="e.g. weekends, evenings"></div>
-          <button class="btn btn--primary" type="submit">Sign up to volunteer</button>
+          <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="v-avail">Availability</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-sand focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 focus:bg-white transition-colors" id="v-avail" name="availability" type="text" placeholder="e.g. weekends, evenings"></div>
+          <button class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white hover:bg-ember hover:-translate-y-0.5 transition-all" type="submit">Sign up to volunteer</button>
         </form>
       </div>
     </div>
 
     <!-- Partner / CSR -->
-    <div class="card reveal" style="margin-top:24px;">
-      <h3>Partner with us · CSR</h3>
-      <p class="partner-note">We welcome corporate CSR partnerships, institutional collaborations with hospitals, schools, and training centres, and in-kind donations. To explore working together, write to <a href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a> or use the contact form below.</p>
+    <div class="bg-white border border-line-cool rounded-2xl p-6 sm:p-8 mt-6 reveal">
+      <h3 class="text-[1.4rem] font-display font-extrabold text-ink mb-2">Partner with us · CSR</h3>
+      <p class="text-slate mt-6">We welcome corporate CSR partnerships, institutional collaborations with hospitals, schools, and training centres, and in-kind donations. To explore working together, write to <a class="text-ember hover:text-orange" href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a> or use the contact form below.</p>
     </div>
   </div>
 </section>
 
 <!-- ========================= GALLERY ========================= -->
-<section class="section" id="gallery">
-  <div class="wrap">
-    <p class="eyebrow reveal">Impact &amp; gallery</p>
-    <h2 class="section-title reveal">Photos from the field, coming soon.</h2>
-    <p class="lede reveal" style="margin-top:14px;">We'll share real photos, stories, and — once our first financial year closes — transparency reports here.</p>
-    <!-- Placeholder tiles: no external images, replace with real photos per pillar -->
-    <div class="gallery__grid reveal">
-      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Health camps</span></div>
-      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Skill development</span></div>
-      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Education</span></div>
-      <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg><span>Women empowerment</span></div>
+<section class="py-16 md:py-24 lg:py-28" id="gallery">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">Impact &amp; gallery</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink reveal">Photos from the field, coming soon.</h2>
+    <p class="text-[clamp(1.05rem,1.6vw,1.28rem)] text-slate max-w-[60ch] mt-3.5 reveal">We'll share real photos, stories, and — once our first financial year closes — transparency reports here.</p>
+    <!-- Placeholder tiles: replace with real photos per pillar -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-9 reveal">
+      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Health camps</span></div>
+      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Skill development</span></div>
+      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Education</span></div>
+      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Women empowerment</span></div>
     </div>
-    <p style="font-size:.86rem; color:var(--muted); margin-top:16px;">Real photos/videos &amp; annual reports to be added. <span class="tbc">To confirm</span></p>
+    <p class="text-[.86rem] text-muted mt-4">Real photos/videos &amp; annual reports to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></p>
   </div>
 </section>
 
 <!-- ========================= CONTACT ========================= -->
-<section class="section section--sand" id="contact">
-  <div class="wrap contact__grid">
+<section class="py-16 md:py-24 lg:py-28 bg-sand" id="contact">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-14">
     <div class="reveal">
-      <p class="eyebrow">Contact us</p>
-      <h2 class="section-title">Reach out — we'd love to hear from you.</h2>
-      <ul class="contact__lines">
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.3-7-11a7 7 0 1 1 14 0c0 4.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          <span><span class="lbl">Registered address</span>1125, Basement C Block, Ansal Essencia,<br>Sector 67, Gurugram — 122102</span>
+      <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Contact us</p>
+      <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink">Reach out — we'd love to hear from you.</h2>
+      <ul class="mt-5.5">
+        <li class="flex gap-3.5 items-start py-3 border-b border-line">
+          <i data-lucide="map-pin" class="w-[22px] h-[22px] text-orange shrink-0 mt-0.5 stroke-[1.75]"></i>
+          <span><span class="block text-[.72rem] tracking-[.12em] uppercase text-muted mb-0.5">Registered address</span><span class="text-ink">1125, Basement C Block, Ansal Essencia,<br>Sector 67, Gurugram — 122102</span></span>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          <span><span class="lbl">Email</span><a href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a></span>
+        <li class="flex gap-3.5 items-start py-3 border-b border-line">
+          <i data-lucide="mail" class="w-[22px] h-[22px] text-orange shrink-0 mt-0.5 stroke-[1.75]"></i>
+          <span><span class="block text-[.72rem] tracking-[.12em] uppercase text-muted mb-0.5">Email</span><a class="text-ink hover:text-orange" href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a></span>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
-          <span><span class="lbl">Phone</span><a href="tel:+919717333837">+91 97173 33837</a></span>
+        <li class="flex gap-3.5 items-start py-3">
+          <i data-lucide="phone" class="w-[22px] h-[22px] text-orange shrink-0 mt-0.5 stroke-[1.75]"></i>
+          <span><span class="block text-[.72rem] tracking-[.12em] uppercase text-muted mb-0.5">Phone</span><a class="text-ink hover:text-orange" href="tel:+919717333837">+91 97173 33837</a></span>
         </li>
       </ul>
-      <p style="font-size:.86rem; color:var(--muted); margin-top:14px;">Social media links to be added. <span class="tbc">To confirm</span></p>
+      <p class="text-[.86rem] text-muted mt-3.5">Social media links to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></p>
     </div>
 
     <div class="reveal">
       <!-- DEV: set action to your Formspree endpoint -->
       <form action="https://formspree.io/f/FORMSPREE_ID" method="POST" novalidate>
-        <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" required autocomplete="name"></div>
-        <div class="field-row">
-          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" required autocomplete="email"></div>
-          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="c-name">Name</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-white focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 transition-colors" id="c-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="c-email">Email</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-white focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 transition-colors" id="c-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="c-phone">Phone</label><input class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-white focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 transition-colors" id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
         </div>
-        <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required></textarea></div>
-        <button class="btn btn--primary" type="submit">Send message</button>
+        <div class="mb-4"><label class="block text-[.82rem] font-semibold text-ink mb-1.5" for="c-msg">Message</label><textarea class="w-full font-sans text-[.98rem] text-ink px-3.5 py-3 border border-line rounded-[10px] bg-white min-h-[110px] resize-y focus:outline-none focus:border-orange focus:ring-[3px] focus:ring-orange/15 transition-colors" id="c-msg" name="message" required></textarea></div>
+        <button class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white hover:bg-ember hover:-translate-y-0.5 transition-all" type="submit">Send message</button>
       </form>
     </div>
   </div>
 </section>
 
 <!-- ======================= CTA BANNER ======================= -->
-<section class="section cta-banner">
-  <div class="wrap reveal">
-    <h2>Your support can change a life.</h2>
-    <p>Give, volunteer, or partner with us — every contribution moves the work forward.</p>
-    <div class="cta-banner__row">
-      <a class="btn btn--primary" href="#donate">Donate Now</a>
-      <a class="btn btn--ghost" href="#volunteer">Volunteer With Us</a>
+<section class="py-16 md:py-24 lg:py-28 bg-orange text-white text-center">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 reveal">
+    <h2 class="font-display font-black text-[clamp(1.8rem,4vw,2.8rem)] text-white mb-4">Your support can change a life.</h2>
+    <p class="text-white/92 text-[1.1rem] max-w-[48ch] mx-auto mb-7">Give, volunteer, or partner with us — every contribution moves the work forward.</p>
+    <div class="flex gap-3.5 justify-center flex-wrap">
+      <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-white text-ember no-underline hover:no-underline hover:bg-ink hover:text-white hover:-translate-y-0.5 transition-all" href="#donate">Donate Now</a>
+      <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full border-[1.5px] border-white/70 text-white no-underline hover:no-underline hover:bg-white hover:text-ember hover:-translate-y-0.5 transition-all" href="#volunteer">Volunteer With Us</a>
     </div>
   </div>
 </section>
@@ -466,48 +478,50 @@
 </main>
 
 <!-- ========================== FOOTER ========================== -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
+<footer class="bg-ink text-[#C9C0B6] pt-12 md:pt-16 pb-7">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr] gap-10 pb-9 border-b border-white/12">
       <div>
-        <a class="brand" href="#home" aria-label="Kagur Foundation home">
-          <img class="brand__mark" src="assets/img/logo-white.svg" alt="" width="34" height="34">
-          <span class="brand__name">KAGUR</span>
+        <a class="flex items-center gap-3 no-underline" href="#home" aria-label="Kagur Foundation home">
+          <img class="w-[34px] h-[34px] shrink-0" src="assets/img/logo-white.svg" alt="" width="34" height="34">
+          <span class="font-display font-black text-[1.28rem] text-white tracking-tight">KAGUR</span>
         </a>
-        <p class="footer__tag">Karma · Ahimsa · Gyan · Utthan · Rashtra</p>
-        <p class="footer__blurb">A Gurugram-based charitable trust working for health, education, skill development, and women empowerment.</p>
+        <p class="font-sans text-[.82rem] tracking-[.14em] uppercase text-orange mt-3.5">Karma · Ahimsa · Gyan · Utthan · Rashtra</p>
+        <p class="text-[.92rem] mt-3.5 max-w-[36ch]">A Gurugram-based charitable trust working for health, education, skill development, and women empowerment.</p>
       </div>
       <div>
-        <h4>Explore</h4>
-        <ul class="footer__links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#work">Our Work</a></li>
-          <li><a href="#donate">Donate</a></li>
-          <li><a href="#volunteer">Volunteer</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <h4 class="text-white font-sans font-semibold text-[.78rem] tracking-[.14em] uppercase mb-4">Explore</h4>
+        <ul>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="#about">About</a></li>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="#work">Our Work</a></li>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="#donate">Donate</a></li>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="#volunteer">Volunteer</a></li>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="#contact">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>Get in touch</h4>
-        <ul class="footer__links">
-          <li>1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</li>
-          <li><a href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a></li>
-          <li><a href="tel:+919717333837">+91 97173 33837</a></li>
+        <h4 class="text-white font-sans font-semibold text-[.78rem] tracking-[.14em] uppercase mb-4">Get in touch</h4>
+        <ul>
+          <li class="mb-2.5">1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</li>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a></li>
+          <li class="mb-2.5"><a class="text-[#C9C0B6] hover:text-white hover:no-underline" href="tel:+919717333837">+91 97173 33837</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer__bottom">
+    <div class="flex justify-between items-center gap-4 flex-wrap pt-5.5 text-[.85rem]">
       <span>© 2026 Kagur Foundation. All rights reserved.</span>
       <!-- Social links placeholder -->
-      <div class="socials" aria-label="Social media">
-        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg></a>
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3ZM5 10h3v9H5v-9Zm5 0h3v1.3c.5-.8 1.6-1.5 3-1.5 2.3 0 3 1.5 3 4V19h-3v-4.7c0-1.2-.4-1.8-1.4-1.8s-1.6.7-1.6 1.8V19h-3v-9Z"/></svg></a>
+      <div class="flex gap-3" aria-label="Social media">
+        <!-- Brand marks: not in Lucide's generic icon set (dropped for trademark reasons), kept as inline SVG -->
+        <a class="w-[34px] h-[34px] border border-white/20 rounded-lg grid place-items-center hover:border-white/40" href="#" aria-label="Facebook"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1Z"/></svg></a>
+        <a class="w-[34px] h-[34px] border border-white/20 rounded-lg grid place-items-center hover:border-white/40" href="#" aria-label="Instagram"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="w-[34px] h-[34px] border border-white/20 rounded-lg grid place-items-center hover:border-white/40" href="#" aria-label="LinkedIn"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3ZM5 10h3v9H5v-9Zm5 0h3v1.3c.5-.8 1.6-1.5 3-1.5 2.3 0 3 1.5 3 4V19h-3v-4.7c0-1.2-.4-1.8-1.4-1.8s-1.6.7-1.6 1.8V19h-3v-9Z"/></svg></a>
       </div>
     </div>
   </div>
 </footer>
 
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

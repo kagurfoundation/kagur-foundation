@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-deva: "Noto Sans Devanagari", ui-sans-serif, sans-serif;
+
+  --color-orange: #E8610A;
+  --color-ember: #B84600;
+  --color-ink: #1A1A1A;
+  --color-slate: #444444;
+  --color-paper: #FFFFFF;
+  --color-sand: #FCF7F1;
+  --color-sand-2: #F6EDE3;
+  --color-line: #E9DFD3;
+  --color-line-cool: #ECECEC;
+  --color-muted: #8A8178;
+}
+
+@layer utilities {
+  /* scroll-reveal: JS toggles the "in" class via IntersectionObserver */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
