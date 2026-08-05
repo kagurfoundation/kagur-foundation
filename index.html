@@ -16,9 +16,10 @@
     since GitHub Pages has no build step of its own).
   • Icons: Lucide, loaded via CDN script + `data-lucide="name"` markers,
     rendered to inline SVG by `lucide.createIcons()` in assets/js/main.js.
-  • Logo: assets/img/logo.svg (dark line, light backgrounds) and
-    assets/img/logo-white.svg (white line, dark backgrounds/footer) —
-    these are the brand mark, not Lucide icons.
+  • Logo: assets/img/kagur_logo.webp — the real lockup (mark + wordmark
+    + tagline), used as-is in the header; wrapped in a white chip in
+    the footer since its text is dark and won't read on bg-ink.
+    Favicon: assets/img/favicon.png.
   • Forms (Volunteer + Contact) POST to Formspree placeholder endpoints —
     replace FORMSPREE_ID. GitHub Pages can't process forms server-side.
   • Donate: replace PAYMENT_LINK with a real Razorpay/Instamojo link, and
@@ -27,7 +28,7 @@
     PLACEHOLDER pending real content from the Foundation (see brief §8).
 -->
 
-<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
@@ -40,12 +41,8 @@
 <!-- ============================ NAV ============================ -->
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-transparent transition-[border-color,box-shadow] duration-200" id="nav">
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8 flex items-center justify-between h-[72px]">
-    <a class="flex items-center gap-3 no-underline" href="#home" aria-label="Kagur Foundation home">
-      <img class="w-[34px] h-[34px] shrink-0" src="assets/img/logo.svg" alt="" width="34" height="34">
-      <span>
-        <span class="block font-display font-black text-[1.28rem] text-ink tracking-tight leading-none">KAGUR</span>
-        <span class="block font-sans font-medium text-[.6rem] tracking-[.18em] uppercase text-muted mt-[3px]">Foundation</span>
-      </span>
+    <a class="flex items-center no-underline" href="#home" aria-label="Kagur Foundation home">
+      <img class="h-9 sm:h-11 w-auto" src="assets/img/kagur_logo.webp" alt="Kagur Foundation — Karma · Ahimsa · Gyan · Utthan · Rashtra">
     </a>
 
     <nav class="hidden md:flex items-center gap-7" aria-label="Primary">
@@ -409,16 +406,27 @@
 <section class="py-16 md:py-24 lg:py-28" id="gallery">
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
     <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">Impact &amp; gallery</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink reveal">Photos from the field, coming soon.</h2>
-    <p class="text-[clamp(1.05rem,1.6vw,1.28rem)] text-slate max-w-[60ch] mt-3.5 reveal">We'll share real photos, stories, and — once our first financial year closes — transparency reports here.</p>
-    <!-- Placeholder tiles: replace with real photos per pillar -->
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink reveal">Photos from the field.</h2>
+    <p class="text-[clamp(1.05rem,1.6vw,1.28rem)] text-slate max-w-[60ch] mt-3.5 reveal">A look at our health camps and community work — with more stories and, once our first financial year closes, transparency reports to follow.</p>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-9 reveal">
-      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Health camps</span></div>
-      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Skill development</span></div>
-      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Education</span></div>
-      <div class="aspect-4/3 rounded-xl bg-sand-2 border border-dashed border-line flex flex-col items-center justify-center gap-2 text-muted text-center p-3.5"><i data-lucide="image" class="w-7 h-7 opacity-60"></i><span class="text-[.82rem] font-medium">Women empowerment</span></div>
+      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
+        <img class="w-full h-full object-cover" src="assets/img/gallery/health-camps.jpg" alt="Free health check-up camp with doctors examining a patient">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Health camps</figcaption>
+      </figure>
+      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
+        <img class="w-full h-full object-cover" src="assets/img/gallery/skill-development.jpg" alt="Volunteers working on laptops at a Foundation event">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Skill development</figcaption>
+      </figure>
+      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
+        <img class="w-full h-full object-cover" src="assets/img/gallery/education.jpg" alt="Community outreach at a Foundation health camp">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Education</figcaption>
+      </figure>
+      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
+        <img class="w-full h-full object-cover" src="assets/img/gallery/women-empowerment.jpg" alt="Woman being attended to by a doctor at a Foundation health camp">
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Women empowerment</figcaption>
+      </figure>
     </div>
-    <p class="text-[.86rem] text-muted mt-4">Real photos/videos &amp; annual reports to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></p>
+    <p class="text-[.86rem] text-muted mt-4">More photos, videos &amp; annual reports to be added over time.</p>
   </div>
 </section>
 
@@ -479,11 +487,9 @@
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr] gap-10 pb-9 border-b border-white/12">
       <div>
-        <a class="flex items-center gap-3 no-underline" href="#home" aria-label="Kagur Foundation home">
-          <img class="w-[34px] h-[34px] shrink-0" src="assets/img/logo-white.svg" alt="" width="34" height="34">
-          <span class="font-display font-black text-[1.28rem] text-white tracking-tight">KAGUR</span>
+        <a class="inline-flex items-center bg-white rounded-xl px-4 py-3 no-underline" href="#home" aria-label="Kagur Foundation home">
+          <img class="h-8 sm:h-9 w-auto" src="assets/img/kagur_logo.webp" alt="Kagur Foundation — Karma · Ahimsa · Gyan · Utthan · Rashtra">
         </a>
-        <p class="font-sans text-[.82rem] tracking-[.14em] uppercase text-orange mt-3.5">Karma · Ahimsa · Gyan · Utthan · Rashtra</p>
         <p class="text-[.92rem] mt-3.5 max-w-[36ch]">A Gurugram-based charitable trust working for health, education, skill development, and women empowerment.</p>
       </div>
       <div>
