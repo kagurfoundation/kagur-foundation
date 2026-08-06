@@ -36,17 +36,32 @@
     }
   }
 
-  /* hero heading marquee: two identical copies side by side, shifted left by exactly one copy's width */
-  @keyframes marquee {
+  /* gallery marquee: JS clones the track's children so one full copy = 50% of the width */
+  @keyframes track-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  .animate-marquee {
-    animation: marquee 24s linear infinite;
+  @keyframes track-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
   }
+  .animate-track-left  { animation: track-left 48s linear infinite; }
+  .animate-track-right { animation: track-right 62s linear infinite; }
+
+  /* pause while a visitor is looking at / tabbing through a photo */
+  .marquee:hover [class*="animate-track"],
+  .marquee:focus-within [class*="animate-track"] {
+    animation-play-state: paused;
+  }
+
+  /* soften both edges so photos fade out instead of being cut */
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee {
-      animation: none;
-    }
+    .animate-track-left, .animate-track-right { animation: none; }
+    .marquee { overflow-x: auto; }
   }
 }

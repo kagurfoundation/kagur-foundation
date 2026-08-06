@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-[88px]">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kagur Foundation — Karma · Ahimsa · Gyan · Utthan · Rashtra</title>
-<meta name="description" content="Kagur Foundation is a Gurugram-based charitable trust working on health, education, skill development, and women empowerment for underserved communities.">
+<meta name="description" content="Kagur Foundation is a Gurugram-based charitable trust working on health, education and skill development, women empowerment, and animal welfare for underserved communities.">
 
 <!--
   KAGUR FOUNDATION — v2 site (static, GitHub Pages ready)
@@ -73,44 +73,147 @@
 <main id="main">
 
 <!-- ============================ HERO ============================ -->
-<section class="bg-gradient-to-b from-white to-sand overflow-hidden" id="home">
-  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 pt-11 md:pt-16 lg:pt-20">
-    <div class="flex flex-wrap items-center gap-x-3.5 gap-y-2 mb-5">
-      <span class="font-sans font-semibold text-[.72rem] tracking-[.16em] uppercase text-slate">Gurugram</span>
-      <span class="font-sans font-semibold text-[.72rem] tracking-[.16em] uppercase text-slate before:content-['·'] before:text-orange before:font-extrabold before:mr-3.5">Charitable Trust</span>
-      <span class="font-sans font-semibold text-[.72rem] tracking-[.16em] uppercase text-slate before:content-['·'] before:text-orange before:font-extrabold before:mr-3.5">Est. 2026</span>
-    </div>
+<section class="relative isolate overflow-hidden" id="home">
+  <!-- background photograph + legibility overlays -->
+  <div class="absolute inset-0 -z-10">
+    <img class="w-full h-full object-cover object-center" src="assets/img/gallery/camp-blood-pressure-check-elderly-man.jpeg" alt="Doctors checking a patient at a free health camp run with Kagur Foundation's partners." fetchpriority="high" decoding="async">
+    <div class="absolute inset-0 bg-ink/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/35"></div>
   </div>
 
-  <h1 class="sr-only">Karma · Ahimsa · Gyan · Utthan · Rashtra</h1>
-  <div class="w-full overflow-hidden" aria-hidden="true">
-    <div class="flex w-max whitespace-nowrap animate-marquee">
-      <p class="font-display font-black text-[clamp(2.3rem,5.4vw,4rem)] leading-[1.05] tracking-tight text-ink pr-8">Karma<span class="text-orange px-1 font-extrabold">·</span>Ahimsa<span class="text-orange px-1 font-extrabold">·</span>Gyan<span class="text-orange px-1 font-extrabold">·</span>Utthan<span class="text-orange px-1 font-extrabold">·</span>Rashtra<span class="text-orange px-1 font-extrabold">·</span></p>
-      <p class="font-display font-black text-[clamp(2.3rem,5.4vw,4rem)] leading-[1.05] tracking-tight text-ink pr-8">Karma<span class="text-orange px-1 font-extrabold">·</span>Ahimsa<span class="text-orange px-1 font-extrabold">·</span>Gyan<span class="text-orange px-1 font-extrabold">·</span>Utthan<span class="text-orange px-1 font-extrabold">·</span>Rashtra<span class="text-orange px-1 font-extrabold">·</span></p>
-    </div>
-  </div>
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 pt-16 pb-14 md:pt-24 md:pb-20 lg:pt-32 lg:pb-28">
+    <h1 class="font-display font-black text-[clamp(2.1rem,5vw,3.75rem)] leading-[1.12] tracking-tight text-white">Karma <span class="text-orange font-extrabold">·</span> Ahimsa <span class="text-orange font-extrabold">·</span> Gyan <span class="text-orange font-extrabold">·</span> Utthan <span class="text-orange font-extrabold">·</span> Rashtra</h1>
 
-  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 pt-3.5 pb-11 md:pb-16 lg:pb-20">
-    <p class="font-sans font-medium text-slate text-[clamp(.9rem,1.3vw,1rem)] tracking-wide my-3.5">Action · Compassion · Knowledge · Upliftment · Nation — the five words we are named for.</p>
-    <p class="text-[clamp(1.05rem,1.5vw,1.24rem)] text-slate max-w-[52ch] mb-7">Kagur Foundation is a Gurugram-based charitable trust working towards better health, education, skill development, and empowerment for underserved communities.</p>
+    <p class="font-sans font-medium text-white/70 text-[clamp(.9rem,1.3vw,1rem)] tracking-wide mt-5 mb-4">Action · Compassion · Knowledge · Upliftment · Nation — the five words we are named for.</p>
+    <p class="text-[clamp(1.05rem,1.5vw,1.24rem)] text-white/85 max-w-[52ch] mb-8">Kagur Foundation is a Gurugram-based charitable trust working towards better health, education and skills, the empowerment of women, and the welfare of animals in underserved communities.</p>
     <div class="flex flex-wrap gap-3.5">
       <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white no-underline hover:no-underline hover:bg-ember hover:-translate-y-0.5 transition-all" href="#donate">Donate Now</a>
-      <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full border-[1.5px] border-ink text-ink no-underline hover:no-underline hover:bg-ink hover:text-white hover:-translate-y-0.5 transition-all" href="#volunteer">Volunteer With Us</a>
+      <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full border-[1.5px] border-white/70 text-white no-underline hover:no-underline hover:bg-white hover:text-ink hover:border-white hover:-translate-y-0.5 transition-all" href="#volunteer">Volunteer With Us</a>
     </div>
   </div>
 </section>
 
-<!-- ======================= MISSION STRIP ======================= -->
-<section class="py-14 md:py-20 border-b border-line-cool">
-  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-5 md:gap-16 items-start reveal">
-    <div>
-      <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Who we are</p>
-      <h2 class="font-display font-extrabold text-[clamp(1.6rem,3vw,2.3rem)] text-ink">A young Trust, built around five old ideas.</h2>
+<!-- ======================= WHO WE ARE / STORY ======================= -->
+<section class="py-16 md:py-24 lg:py-28 border-b border-line-cool" id="story">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_1.25fr] gap-6 md:gap-16 items-start reveal">
+      <div>
+        <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Who we are</p>
+        <h2 class="font-display font-extrabold text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.12] text-ink">Four people. Four reasons. One Foundation.</h2>
+      </div>
+      <div>
+        <p class="text-[1.15rem] text-ink font-medium mb-4">Kagur Foundation was registered in 2026. The work is a great deal older than that.</p>
+        <p class="text-[1.08rem] text-slate">It began in 1990, at a folding table in a village in Mewat — and it has been carried on since by four members of one family, each pulled in by something different. This is where each of them started.</p>
+      </div>
     </div>
-    <div>
-      <p class="text-[1.08rem] text-slate mb-4">Founded in 2026 and based in Gurugram, Kagur Foundation exists to promote social welfare, human development, and inclusive growth — with a focus on health, education, skill development for students, and the empowerment of women in underserved and marginalized communities.</p>
-      <p class="text-[1.08rem] text-slate">We are newly established, and we believe the way to earn trust is to be plain about who we are and what we do. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Origin story to confirm</span></p>
+
+    <ol class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mt-12 md:mt-16 list-none">
+
+      <li class="bg-sand border border-line rounded-2xl p-6 sm:p-8 reveal">
+        <div class="flex items-baseline gap-4 mb-4">
+          <span class="font-display font-black text-[2rem] leading-none text-orange/35">01</span>
+          <span class="font-sans font-semibold text-[.7rem] tracking-[.16em] uppercase text-orange">The doctor · Health</span>
+        </div>
+        <h3 class="font-display font-extrabold text-[1.3rem] text-ink mb-3">He stopped waiting for patients to reach him.</h3>
+        <p class="text-slate mb-3.5">He spent his working life as a government doctor in Mewat. The patients he thought about most were the ones who never arrived — the woman who could not travel alone, the old man for whom the district hospital meant a day of walking and a day of lost wages. Distance, he realised, was its own kind of illness.</p>
+        <p class="text-slate">So in 1990 he carried the hospital to them. One table, a few colleagues he trusted, and a free health camp in a village. Close to <strong class="text-ink font-semibold">300 people came that first day</strong>. He has not stopped since — three decades of camps in village halls, dharamshalas and courtyards, and no reason yet to look back.</p>
+      </li>
+
+      <li class="bg-sand border border-line rounded-2xl p-6 sm:p-8 reveal">
+        <div class="flex items-baseline gap-4 mb-4">
+          <span class="font-display font-black text-[2rem] leading-none text-orange/35">02</span>
+          <span class="font-sans font-semibold text-[.7rem] tracking-[.16em] uppercase text-orange">Skills &amp; livelihood</span>
+        </div>
+        <h3 class="font-display font-extrabold text-[1.3rem] text-ink mb-3">Willing hands, and no way to prove it.</h3>
+        <p class="text-slate mb-3.5">Another in the family kept meeting the same young person, again and again, in different villages. Bright, willing, ready to work — and turned away at every door for want of a certificate. What they lacked was never ability. It was proof, and somewhere close enough to go and earn it.</p>
+        <p class="text-slate">So he built the somewhere. Working with the <strong class="text-ink font-semibold">National Skill Development Corporation</strong>, he opened two training centres — one in <strong class="text-ink font-semibold">Deogarh</strong>, one in <strong class="text-ink font-semibold">Ranchi</strong> — so a young person could learn a trade without leaving home, and then be able to earn from it.</p>
+      </li>
+
+      <li class="bg-sand border border-line rounded-2xl p-6 sm:p-8 reveal">
+        <div class="flex items-baseline gap-4 mb-4">
+          <span class="font-display font-black text-[2rem] leading-none text-orange/35">03</span>
+          <span class="font-sans font-semibold text-[.7rem] tracking-[.16em] uppercase text-orange">Ahimsa · Animal welfare</span>
+        </div>
+        <h3 class="font-display font-extrabold text-[1.3rem] text-ink mb-3">She was eleven, and she could not walk past.</h3>
+        <p class="text-slate mb-3.5">The daughter of the family was <strong class="text-ink font-semibold">eleven years old</strong> when she helped her first hurt animal. She has never managed to look away since.</p>
+        <p class="text-slate">She feeds the ones she finds. She gets them treated when they are injured, and stays with them when they are frightened. She gives every one of them a name. When they go hungry, she goes hungry with them; when they are content, it shows on her face all day. In this family, <em>ahimsa</em> is not a word on a wall. It is something one of us does, quietly, every single day.</p>
+      </li>
+
+      <li class="bg-sand border border-line rounded-2xl p-6 sm:p-8 reveal">
+        <div class="flex items-baseline gap-4 mb-4">
+          <span class="font-display font-black text-[2rem] leading-none text-orange/35">04</span>
+          <span class="font-sans font-semibold text-[.7rem] tracking-[.16em] uppercase text-orange">Women, girls &amp; elders</span>
+        </div>
+        <h3 class="font-display font-extrabold text-[1.3rem] text-ink mb-3">The conversations nobody was having.</h3>
+        <p class="text-slate mb-3.5">Cervical cancer is one of the few cancers medicine can now largely prevent. The HPV vaccine works best when it is given early — <strong class="text-ink font-semibold">from the age of nine</strong>, while a child's immune response is at its strongest, when just <strong class="text-ink font-semibold">two doses, six months apart</strong>, are enough. Most families are simply never told. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1 whitespace-nowrap">Medical wording to confirm</span></p>
+        <p class="text-slate">So the fourth story is about saying the unsaid, plainly and without embarrassment: the vaccine that prevents a cancer, leucorrhea and reproductive health, hygiene for women and girls who were taught not to ask — and, for our elders, what is already owed to them and how to claim it: pension, health checks, and the schemes written for them that never reach them.</p>
+      </li>
+
+    </ol>
+
+    <div class="bg-ink text-[#F3EDE6] rounded-2xl p-7 sm:p-10 mt-4 md:mt-5 reveal">
+      <p class="text-[1.08rem] sm:text-[1.15rem] mb-4">For years these were four separate acts of care, carried out by four people who happened to share a family — a camp here, a classroom there, a stray dog fed on the way home.</p>
+      <p class="text-[1.08rem] sm:text-[1.15rem] mb-4">Then one of them said the obvious thing out loud: done together, and done properly, this could reach far more people than any one of us could alone.</p>
+      <p class="font-display font-extrabold text-[clamp(1.25rem,2.4vw,1.7rem)] text-white leading-[1.25]">That is what Kagur Foundation is. Not a new idea — an old one, finally organised.</p>
     </div>
+
+  </div>
+</section>
+
+<!-- ========================= GALLERY ========================= -->
+<section class="py-16 md:py-24 lg:py-28 border-b border-line-cool" id="gallery">
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">Impact &amp; gallery</p>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink reveal">Photos from the field.</h2>
+    <p class="text-[clamp(1.05rem,1.6vw,1.28rem)] text-slate max-w-[60ch] mt-3.5 reveal">Health camps across Mewat, Nuh and Sohna, our skill and training centres in Deoghar and Ranchi, and the strays fed after dark — the work as it actually looks.</p>
+  </div>
+
+  <!-- Auto-scrolling photo band (full-bleed). JS duplicates the track for a seamless loop. -->
+  <div class="marquee marquee-mask overflow-hidden mt-9 md:mt-11" aria-label="Photographs from the field">
+    <div class="flex w-max gap-3 animate-track-left" data-marquee-track>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-doctor-examining-elderly-man.jpeg" alt="A doctor examining an elderly patient at a free health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/training-computer-lab-data-entry-batch.jpeg" alt="Students in a skill-centre computer lab holding their course books" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-patient-registration-queue.jpeg" alt="Patients queuing at the registration table of a health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/training-women-batch-with-study-materials.jpeg" alt="Young women at a training centre holding their new notebooks and stationery" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-paras-health-screening-room.jpeg" alt="Several screening stations running at once inside a health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/training-nsdc-skill-centre-alumni-event.jpeg" alt="An alumni event at the NSDC-partnered mega skill centre" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover object-[center_45%]" src="assets/img/gallery/animal-welfare-street-dogs-night-feeding.jpeg" alt="Street dogs being fed by the roadside late at night" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-free-medicine-distribution.jpeg" alt="Free medicines being handed out to families at a camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/health-camps.jpg" alt="Free health check-up camp with doctors examining a patient" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/training-deoghar-centre-dining-hall.jpeg" alt="Trainees at the dining hall of the Deoghar centre in Jharkhand" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-doctors-with-brahma-kumaris-team.jpeg" alt="Doctors and volunteers together at a free health and meditation camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/skill-development.jpg" alt="Volunteers working on laptops at a Foundation event" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-consultation-hall-dharamshala.jpeg" alt="Consultations under way in a community hall" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/training-centre-womens-dining-hall.jpeg" alt="Women trainees sharing a meal at the training centre" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-bp-check-village-patient.jpeg" alt="Blood pressure being checked at a village camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/education.jpg" alt="Community outreach at a Foundation health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/tree-plantation-drive.jpeg" alt="Volunteers planting a sapling during a plantation drive" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/women-empowerment.jpg" alt="A woman being attended to by a doctor at a health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 w-[260px] sm:w-[320px] h-[190px] sm:h-[230px] rounded-xl overflow-hidden bg-sand-2"><img class="w-full h-full object-cover" src="assets/img/gallery/camp-medical-team-group-photo.jpeg" alt="The medical team at the end of a health camp" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8 mt-12 md:mt-16">
+    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-2 reveal">In the press</p>
+    <p class="text-slate max-w-[60ch] reveal">Our camps have been covered by local Hindi dailies across Nuh, Sohna and Bawal — 93 patients here, 108 there, 450 at the Ghasera camp.</p>
+  </div>
+
+  <div class="marquee marquee-mask overflow-hidden mt-6 md:mt-8" aria-label="Newspaper coverage of our health camps">
+    <div class="flex w-max gap-3 items-stretch animate-track-right" data-marquee-track>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-abhaypur-camp-93-patients.jpeg" alt="Newspaper report: free health camp at Abhaypur, 93 patients treated" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-sohna-camp-92-patients-clipping.jpeg" alt="Newspaper report: 92 patients benefited at a free health camp in Sohna" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-ambedkar-jayanti-camp-108-patients.jpeg" alt="Newspaper report: 108 patients treated at the Ambedkar Jayanti health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-raipur-sohna-camp-86-patients.jpeg" alt="Newspaper report: 86 patients treated at a camp in Raipur, Sohna" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-bawal-camp-112-patients.jpeg" alt="Newspaper report: 112 patients treated at the Bawal health camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-ghasera-camp-450-patients.jpeg" alt="Newspaper report: 450 patients examined at the one-day camp in Ghasera" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-om-shanti-camp-88-patients.jpeg" alt="Newspaper report: 88 patients treated at the Om Shanti Centre camp" loading="lazy" decoding="async"></figure>
+      <figure class="m-0 shrink-0 h-[230px] sm:h-[280px] rounded-xl overflow-hidden bg-white border border-line"><img class="h-full w-auto object-contain" src="assets/img/gallery/news-mewat-express-camp-86-patients.jpeg" alt="Mewat News Express report on a free health camp" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+
+  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
+    <p class="text-[.86rem] text-muted mt-6">More photos, videos &amp; annual reports to be added over time.</p>
   </div>
 </section>
 
@@ -134,19 +237,11 @@
         <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-health">Learn more →</a>
       </article>
 
-      <!-- Skill -->
-      <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
-        <i data-lucide="star" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
-        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Skill Development of Students</h3>
-        <p class="text-[.95rem] text-slate mb-4 flex-1">Vocational training, digital literacy, personality development, and career-readiness programs for students.</p>
-        <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-skill">Learn more →</a>
-      </article>
-
-      <!-- Education -->
+      <!-- Education & Skill Development -->
       <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
         <i data-lucide="graduation-cap" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
-        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Education</h3>
-        <p class="text-[.95rem] text-slate mb-4 flex-1">Scholarships, learning materials, and support for schools, coaching, and literacy for underprivileged children and youth.</p>
+        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Education &amp; Skill Development</h3>
+        <p class="text-[.95rem] text-slate mb-4 flex-1">Scholarships and learning materials, plus vocational training, digital literacy, and career-readiness programs for students and youth.</p>
         <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-education">Learn more →</a>
       </article>
 
@@ -157,12 +252,14 @@
         <p class="text-[.95rem] text-slate mb-4 flex-1">Awareness, vocational training, self-help groups, and support for the social and economic empowerment of women and girls.</p>
         <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-women">Learn more →</a>
       </article>
-    </div>
 
-    <!-- Dog healthcare — brief mention, not a pillar (per brief §4.3) -->
-    <div class="mt-6.5 flex gap-4 items-start bg-sand border border-dashed border-line rounded-xl px-5.5 py-4.5 reveal">
-      <i data-lucide="dog" class="w-[26px] h-[26px] text-orange shrink-0 mt-0.5 stroke-[1.75]"></i>
-      <p class="text-[.95rem] text-slate"><strong class="text-ink">Also active — Dog Healthcare.</strong> Alongside our four pillars, the Foundation supports medical treatment and welfare for street and shelter dogs. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Copy &amp; photo to confirm</span></p>
+      <!-- Animal Welfare -->
+      <article class="bg-white border border-line-cool rounded-2xl p-6 pb-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_24px_44px_-26px_rgba(26,26,26,0.28)] hover:border-line transition-all reveal">
+        <i data-lucide="dog" class="w-[46px] h-[46px] text-orange mb-4.5 stroke-[1.75]"></i>
+        <h3 class="font-display font-extrabold text-[1.18rem] text-ink mb-2.5">Animal Welfare</h3>
+        <p class="text-[.95rem] text-slate mb-4 flex-1">Daily feeding, rescue, medical treatment and protection for street and shelter animals — care given one animal at a time.</p>
+        <a class="font-semibold text-[.9rem] text-ember hover:text-orange hover:no-underline no-underline" href="#work-animals">Learn more →</a>
+      </article>
     </div>
   </div>
 </section>
@@ -171,78 +268,104 @@
 <section class="py-16 md:py-24 lg:py-28" id="work">
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
     <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">In detail</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink mb-11 reveal">What each pillar means on the ground.</h2>
+    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink reveal">What each pillar means on the ground.</h2>
+    <p class="hidden md:flex items-center gap-2 text-[.9rem] text-muted mt-4 reveal"><i data-lucide="mouse-pointer-2" class="w-4 h-4 stroke-[1.75]"></i>Keep scrolling — each pillar stacks over the one before it.</p>
 
-    <!-- Health -->
-    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 reveal" id="work-health">
-      <div>
-        <div class="flex items-center gap-3.5">
-          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">01</span>
-          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Health-Related Activities</h3>
-        </div>
-      </div>
-      <dl>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
-        <dd class="text-slate mb-5">Health check-up, blood, and eye camps; medical awareness, preventive healthcare, sanitation and nutrition drives; maternal, child, adolescent, and mental-health awareness. We help needy individuals access basic medical services, medicines, diagnostics, and treatment — working with hospitals, doctors, and healthcare professionals.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
-        <dd class="text-slate mb-5">Underserved and economically weaker communities.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
-        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a health camp</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a medical professional</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate medical supplies</span></dd>
-      </dl>
-    </div>
+    <!-- Scroll-stacking cards: each card sticks below the header, the next slides over it -->
+    <div class="mt-9 md:mt-12">
 
-    <!-- Skill -->
-    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 border-t border-line reveal" id="work-skill">
-      <div>
-        <div class="flex items-center gap-3.5">
-          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">02</span>
-          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Skill Development of Students</h3>
+      <!-- 01 Health -->
+      <article class="md:sticky md:top-[96px] mb-6 md:mb-10 bg-white border border-line rounded-2xl overflow-hidden shadow-[0_30px_60px_-32px_rgba(26,26,26,0.4)]" id="work-health">
+        <div class="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr]">
+          <div class="p-6 sm:p-9 order-2 md:order-1">
+            <div class="flex items-center gap-3.5 mb-6">
+              <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">01</span>
+              <h3 class="font-display font-extrabold text-[clamp(1.35rem,2.2vw,1.7rem)] text-ink">Health-Related Activities</h3>
+            </div>
+            <dl>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+              <dd class="text-slate mb-5">Health check-up, blood, and eye camps; medical awareness, preventive healthcare, sanitation and nutrition drives; maternal, child, adolescent, and mental-health awareness. We help needy individuals access basic medical services, medicines, diagnostics, and treatment — working with hospitals, doctors, and healthcare professionals.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+              <dd class="text-slate mb-5">Underserved and economically weaker communities.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+              <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a health camp</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a medical professional</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate medical supplies</span></dd>
+            </dl>
+          </div>
+          <div class="relative order-1 md:order-2 min-h-[220px] md:min-h-[420px] bg-sand-2">
+            <img class="absolute inset-0 w-full h-full object-cover" src="assets/img/gallery/camp-doctor-examining-elderly-man.jpeg" alt="A doctor examining an elderly patient at a free health camp" loading="lazy" decoding="async">
+          </div>
         </div>
-      </div>
-      <dl>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
-        <dd class="text-slate mb-5">Vocational and technical training, digital literacy, and career-oriented workshops; personality, communication, entrepreneurship, and leadership development; computer education, language and financial literacy, workplace readiness, internship guidance, mentorship, and exposure visits — often with educational institutions, training centres, and industry experts.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
-        <dd class="text-slate mb-5">Students, particularly from underprivileged backgrounds.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
-        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a student's training</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a mentor/trainer</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate equipment</span></dd>
-      </dl>
-    </div>
+      </article>
 
-    <!-- Education -->
-    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 border-t border-line reveal" id="work-education">
-      <div>
-        <div class="flex items-center gap-3.5">
-          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">03</span>
-          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Education</h3>
+      <!-- 02 Education & Skill Development -->
+      <article class="md:sticky md:top-[112px] mb-6 md:mb-10 bg-white border border-line rounded-2xl overflow-hidden shadow-[0_30px_60px_-32px_rgba(26,26,26,0.4)]" id="work-education">
+        <div class="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr]">
+          <div class="p-6 sm:p-9 order-2 md:order-1">
+            <div class="flex items-center gap-3.5 mb-6">
+              <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">02</span>
+              <h3 class="font-display font-extrabold text-[clamp(1.35rem,2.2vw,1.7rem)] text-ink">Education &amp; Skill Development</h3>
+            </div>
+            <dl>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+              <dd class="text-slate mb-5">Scholarships, books, uniforms, stationery, and digital learning materials; support for schools, coaching centres, libraries, and remedial education. Alongside it, vocational and technical training, digital literacy, and career-oriented workshops — computer education, financial and language literacy, workplace readiness, mentorship, and internship guidance, run with educational institutions, training centres, and industry experts.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+              <dd class="text-slate mb-5">Children, students, and youth from underprivileged backgrounds, in rural and urban communities.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+              <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a student</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a teacher/mentor</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate books or equipment</span></dd>
+            </dl>
+          </div>
+          <div class="relative order-1 md:order-2 min-h-[220px] md:min-h-[420px] bg-sand-2">
+            <img class="absolute inset-0 w-full h-full object-cover" src="assets/img/gallery/training-computer-lab-data-entry-batch.jpeg" alt="Students in the computer lab of a skill centre holding their Soft Skills and Data Entry Operator course books" loading="lazy" decoding="async">
+          </div>
         </div>
-      </div>
-      <dl>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
-        <dd class="text-slate mb-5">Scholarships, books, uniforms, stationery, and digital learning materials; support for schools, coaching centres, libraries, and remedial education; literacy and adult/non-formal education; and support for underprivileged children, school dropouts, and differently-abled learners.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
-        <dd class="text-slate mb-5">Children, youth, and disadvantaged groups in rural and urban communities.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
-        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a student's education</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Donate books/materials</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a teacher/tutor</span></dd>
-      </dl>
-    </div>
+      </article>
 
-    <!-- Women -->
-    <div class="grid grid-cols-1 md:grid-cols-[.9fr_1.1fr] gap-6 md:gap-14 items-start py-9 md:py-12 border-t border-line reveal" id="work-women">
-      <div>
-        <div class="flex items-center gap-3.5">
-          <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">04</span>
-          <h3 class="font-display font-extrabold text-[clamp(1.4rem,2.4vw,1.8rem)] text-ink">Women Empowerment</h3>
+      <!-- 03 Women Empowerment -->
+      <article class="md:sticky md:top-[128px] mb-6 md:mb-10 bg-white border border-line rounded-2xl overflow-hidden shadow-[0_30px_60px_-32px_rgba(26,26,26,0.4)]" id="work-women">
+        <div class="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr]">
+          <div class="p-6 sm:p-9 order-2 md:order-1">
+            <div class="flex items-center gap-3.5 mb-6">
+              <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">03</span>
+              <h3 class="font-display font-extrabold text-[clamp(1.35rem,2.2vw,1.7rem)] text-ink">Women Empowerment</h3>
+            </div>
+            <dl>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+              <dd class="text-slate mb-5">Awareness on the HPV vaccine and cervical-cancer prevention, leucorrhea and reproductive health, hygiene, women's rights, legal literacy and safety; awareness for the elderly on health, pension and the schemes meant for them; vocational training and self-employment support; and counselling and capacity-building for women and girls.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+              <dd class="text-slate mb-5">Women, adolescent girls, and elders in underserved communities.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+              <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor an awareness drive</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a mentor/trainer</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Support a self-help group</span></dd>
+            </dl>
+          </div>
+          <div class="relative order-1 md:order-2 min-h-[220px] md:min-h-[420px] bg-sand-2">
+            <img class="absolute inset-0 w-full h-full object-cover" src="assets/img/gallery/camp-doctor-consulting-woman-patient.jpeg" alt="A woman being consulted by a doctor at a Foundation health camp" loading="lazy" decoding="async">
+          </div>
         </div>
-      </div>
-      <dl>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
-        <dd class="text-slate mb-5">Awareness on women's rights, legal literacy, health, hygiene, and safety; vocational training and self-employment opportunities; support for self-help groups and livelihood initiatives; and education, counselling, and capacity-building for women and girls.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
-        <dd class="text-slate mb-5">Women and girls in underserved communities.</dd>
-        <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
-        <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a training program</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer as a mentor/trainer</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Support a self-help group</span></dd>
-      </dl>
+      </article>
+
+      <!-- 04 Animal Welfare -->
+      <article class="md:sticky md:top-[144px] bg-white border border-line rounded-2xl overflow-hidden shadow-[0_30px_60px_-32px_rgba(26,26,26,0.4)]" id="work-animals">
+        <div class="grid grid-cols-1 md:grid-cols-[1.05fr_.95fr]">
+          <div class="p-6 sm:p-9 order-2 md:order-1">
+            <div class="flex items-center gap-3.5 mb-6">
+              <span class="font-display font-black text-[1rem] text-orange border-[1.5px] border-orange rounded-lg w-[34px] h-[34px] grid place-items-center shrink-0">04</span>
+              <h3 class="font-display font-extrabold text-[clamp(1.35rem,2.2vw,1.7rem)] text-ink">Animal Welfare</h3>
+            </div>
+            <dl>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">What we do</dt>
+              <dd class="text-slate mb-5">Daily feeding of street animals, rescue and medical treatment for the injured and unwell, vaccination and sterilisation support, and shelter for those with nowhere to go. Every animal we care for is fed, treated, protected — and named.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">Who we serve</dt>
+              <dd class="text-slate mb-5">Street and shelter animals — over 100 fed every single day.</dd>
+              <dt class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-1.5">How you can help</dt>
+              <dd class="flex flex-wrap gap-2"><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Sponsor a day of feeding</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Fund a treatment</span><span class="text-[.85rem] font-medium bg-sand-2 text-ink rounded-full px-3.5 py-1.5">Volunteer for rescue &amp; feeding</span></dd>
+            </dl>
+          </div>
+          <div class="relative order-1 md:order-2 min-h-[220px] md:min-h-[420px] bg-sand-2">
+            <img class="absolute inset-0 w-full h-full object-cover object-[center_45%]" src="assets/img/gallery/animal-welfare-street-dogs-night-feeding.jpeg" alt="Street dogs being fed by the roadside late at night" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -252,14 +375,12 @@
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8 reveal">
     <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Our impact</p>
     <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-white">The numbers, once the work adds up.</h2>
-    <!-- Placeholder counters — replace em-dashes with real figures (brief §8) -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-0.5 mt-9 border border-white/15 rounded-2xl overflow-hidden">
-      <div class="p-8 px-6 border-r border-b lg:border-b-0 border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Health camps conducted</div></div>
-      <div class="p-8 px-6 border-b lg:border-b-0 lg:border-r border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Students supported</div></div>
-      <div class="p-8 px-6 border-r border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Women reached</div></div>
-      <div class="p-8 px-6"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">—</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">People reached overall</div></div>
+      <div class="p-8 px-6 border-r border-b lg:border-b-0 border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">500+</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Health camps conducted</div></div>
+      <div class="p-8 px-6 border-b lg:border-b-0 lg:border-r border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">400+</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Students trained every year</div></div>
+      <div class="p-8 px-6 border-r border-white/10"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">500+</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Women reached through awareness</div></div>
+      <div class="p-8 px-6"><div class="font-display font-black text-[clamp(2.1rem,4vw,3rem)] text-orange leading-none">100+</div><div class="font-sans text-[.9rem] text-[#CFC6BC] mt-2.5">Animals fed every single day</div></div>
     </div>
-    <p class="text-[#9F978D] text-[.9rem] mt-4">As a Foundation founded in 2026, we'll publish real figures here as our first programs complete. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Data to confirm</span></p>
   </div>
 </section>
 
@@ -280,8 +401,8 @@
           <p class="text-slate">A vision statement in the Foundation's own words will sit here once finalized.</p>
         </div>
         <div class="bg-white border border-line-cool rounded-2xl px-7 py-6.5">
-          <h4 class="text-[.78rem] tracking-[.16em] uppercase text-orange font-sans font-semibold mb-2.5">Our Story <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></h4>
-          <p class="text-slate">The meaning behind "Kagur," and why the Foundation was founded in 2026 around Karma, Ahimsa, Gyan, Utthan, and Rashtra, will be told here.</p>
+          <h4 class="text-[.78rem] tracking-[.16em] uppercase text-orange font-sans font-semibold mb-2.5">Our Story</h4>
+          <p class="text-slate">It started in 1990 with one doctor, one table and a village health camp — and grew into four separate efforts by four members of one family: health, skills, animal welfare, and the health and dignity of women, girls and elders. In 2026 they were brought under one Trust. <a class="text-orange font-medium" href="#story">Read the full story</a>.</p>
         </div>
       </div>
 
@@ -315,14 +436,39 @@
     <!-- Trustees -->
     <div class="mt-14 reveal">
       <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4">Our Trustees</p>
-      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mt-4">
-        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">K</div><div class="font-display font-extrabold text-[1rem] text-ink">Kartik</div><div class="text-[.82rem] text-slate">Trustee · Authorised Signatory</div></div>
-        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">A</div><div class="font-display font-extrabold text-[1rem] text-ink">Ankita Saran</div><div class="text-[.82rem] text-slate">Trustee</div></div>
-        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">G</div><div class="font-display font-extrabold text-[1rem] text-ink">Gobind Saran</div><div class="text-[.82rem] text-slate">Trustee</div></div>
-        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">U</div><div class="font-display font-extrabold text-[1rem] text-ink">Usha Rani</div><div class="text-[.82rem] text-slate">Authorised Trustee</div></div>
-        <div class="text-center"><div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">R</div><div class="font-display font-extrabold text-[1rem] text-ink">Ruchika Singh</div><div class="text-[.82rem] text-slate">Trustee</div></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-4">
+        <div class="text-center bg-white border border-line-cool rounded-2xl px-5 py-6">
+          <div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">U</div>
+          <div class="font-display font-extrabold text-[1rem] text-ink">Usha Rani</div>
+          <div class="text-[.82rem] text-orange font-semibold mb-2">President</div>
+          <p class="text-[.86rem] text-slate leading-snug">Runs a hospital — and runs the family home with the same steady hand.</p>
+        </div>
+        <div class="text-center bg-white border border-line-cool rounded-2xl px-5 py-6">
+          <div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">G</div>
+          <div class="font-display font-extrabold text-[1rem] text-ink">Dr. Gobind Saran</div>
+          <div class="text-[.82rem] text-orange font-semibold mb-2">Treasurer</div>
+          <p class="text-[.86rem] text-slate leading-snug">A doctor — MBBS, DTCD, MNCCP, MICS. The 1990 camp was his.</p>
+        </div>
+        <div class="text-center bg-white border border-line-cool rounded-2xl px-5 py-6">
+          <div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">K</div>
+          <div class="font-display font-extrabold text-[1rem] text-ink">Kartik Saran</div>
+          <div class="text-[.82rem] text-orange font-semibold mb-2">General Secretary</div>
+          <p class="text-[.86rem] text-slate leading-snug">Runs the Foundation's skill and training centres.</p>
+        </div>
+        <div class="text-center bg-white border border-line-cool rounded-2xl px-5 py-6">
+          <div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">A</div>
+          <div class="font-display font-extrabold text-[1rem] text-ink">Ankita Saran</div>
+          <div class="text-[.82rem] text-orange font-semibold mb-2">Joint Secretary</div>
+          <p class="text-[.86rem] text-slate leading-snug">Teaches dance and drama to young children, and is a devoted guardian to street animals.</p>
+        </div>
+        <div class="text-center bg-white border border-line-cool rounded-2xl px-5 py-6">
+          <div class="w-[84px] h-[84px] mx-auto mb-3 rounded-full bg-gradient-to-br from-orange to-ember text-white grid place-items-center font-display font-black text-2xl">R</div>
+          <div class="font-display font-extrabold text-[1rem] text-ink">Ruchika Singh</div>
+          <div class="text-[.82rem] text-orange font-semibold mb-2">Vice President</div>
+          <p class="text-[.86rem] text-slate leading-snug">A corporate professional. She brought four separate efforts under one Trust, and builds the systems that keep them running.</p>
+        </div>
       </div>
-      <p class="text-[.86rem] text-muted mt-4 text-center">Photos &amp; short bios to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></p>
+      <p class="text-[.86rem] text-muted mt-4 text-center">Photographs of the trustees to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span></p>
     </div>
 
     <!-- Legal / transparency -->
@@ -332,8 +478,9 @@
         <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Registered name</dt><dd class="text-ink font-medium">Kagur Foundation (Charitable Trust)</dd></div>
         <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Founding year</dt><dd class="text-ink font-medium">2026</dd></div>
         <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Registered address</dt><dd class="text-ink font-medium">1125, Basement C Block, Ansal Essencia, Sector 67, Gurugram — 122102</dd></div>
-        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">80G / 12A status</dt><dd class="text-ink font-medium">To confirm <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Pending</span></dd></div>
-        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">PAN (for donation receipts)</dt><dd class="text-ink font-medium">To confirm <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">Pending</span></dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">12A registration</dt><dd class="text-ink font-medium tracking-wide break-words">AAGTK5267KE20261</dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">80G registration</dt><dd class="text-ink font-medium tracking-wide break-words">AAGTK5267KF20261</dd></div>
+        <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">PAN (for donation receipts)</dt><dd class="text-ink font-medium tracking-wide">AAGTK5267K</dd></div>
         <div><dt class="font-sans font-semibold text-[.72rem] tracking-[.12em] uppercase text-muted mb-1">Accounts</dt><dd class="text-ink font-medium">Newly established in 2026; FY 2025–26 filed as NIL.</dd></div>
       </dl>
     </div>
@@ -341,7 +488,7 @@
 </section>
 
 <!-- ======================= GET INVOLVED ======================= -->
-<section class="py-16 md:py-24 lg:py-28 bg-sand" id="involved">
+<section class="py-16 md:py-24 lg:py-28 bg-sand border-b border-line" id="involved">
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
     <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">Get involved</p>
     <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink mb-10 reveal">Give, volunteer, or partner with us.</h2>
@@ -356,13 +503,28 @@
           <li class="flex gap-3.5 items-baseline py-2.5 border-b border-line-cool"><span class="font-display font-extrabold text-orange text-[1.05rem] whitespace-nowrap">₹2,000</span><span class="text-slate">Can support a student's skill-development training.</span></li>
           <li class="flex gap-3.5 items-baseline py-2.5"><span class="font-display font-extrabold text-orange text-[1.05rem] whitespace-nowrap">₹5,000</span><span class="text-slate">Can help equip a woman's self-help group initiative.</span></li>
         </ul>
-        <!-- DEV: replace href below with a real Razorpay/Instamojo PAYMENT_LINK -->
-        <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white no-underline hover:no-underline hover:bg-ember hover:-translate-y-0.5 transition-all" href="#donate" data-pay-link>Donate Now</a>
+        <!-- UPI / QR -->
+        <div class="bg-sand border border-line rounded-2xl p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-5 sm:gap-6 items-center">
+          <a class="block w-[150px] mx-auto sm:mx-0 bg-white border border-line rounded-xl p-2.5 no-underline hover:no-underline" href="assets/img/donation-qr.jpeg" target="_blank" rel="noopener" aria-label="Open the donation QR code at full size">
+            <img class="w-full h-auto block rounded-md" src="assets/img/donation-qr.jpeg" alt="UPI QR code for donating to Kagur Foundation" loading="lazy" decoding="async">
+          </a>
+          <div>
+            <p class="font-sans font-semibold text-[.72rem] tracking-[.14em] uppercase text-orange mb-2">Pay by UPI</p>
+            <p class="text-slate text-[.95rem] mb-3">Scan the code with any UPI app, or send directly to our UPI ID.</p>
+            <div class="flex flex-wrap items-center gap-2.5">
+              <code class="font-sans font-semibold text-ink text-[.95rem] bg-white border border-line rounded-lg px-3.5 py-2 select-all">9717333837@idfcbank</code>
+              <button class="font-sans font-semibold text-[.85rem] text-ember border border-line rounded-lg px-3.5 py-2 hover:bg-white hover:border-orange transition-colors" type="button" data-copy="9717333837@idfcbank">Copy</button>
+            </div>
+            <p class="text-[.84rem] text-muted mt-3">PAN <strong class="text-slate font-semibold tracking-wide">AAGTK5267K</strong> — quote it when you need a receipt.</p>
+          </div>
+        </div>
+
+        <a class="inline-flex items-center gap-2 font-sans font-semibold px-6 py-3.5 rounded-full bg-orange text-white no-underline hover:no-underline hover:bg-ember hover:-translate-y-0.5 transition-all mt-5" href="upi://pay?pa=9717333837@idfcbank&amp;pn=Kagur%20Foundation&amp;cu=INR" data-pay-link>Donate via UPI</a>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Online / UPI</span><span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Bank transfer</span><span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Cheque</span>
+          <span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">UPI</span><span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Bank transfer</span><span class="text-[.82rem] font-medium border border-line rounded-full px-3.5 py-1.5 text-slate">Cheque</span>
         </div>
         <p class="text-[.84rem] text-muted mt-4">
-          Payment gateway, bank &amp; UPI details, and 80G receipt info to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span>
+          Donations qualify for tax deduction under Section 80G — registration <strong class="text-slate font-semibold tracking-wide">AAGTK5267KF20261</strong>. Bank account details to be added. <span class="inline-block font-sans text-[.66rem] font-semibold tracking-wide uppercase text-muted border border-dashed border-muted rounded-full px-2.5 py-px align-middle ml-1.5 whitespace-nowrap">To confirm</span>
         </p>
       </div>
 
@@ -384,6 +546,7 @@
               <option>Health camps</option>
               <option>Teaching / mentoring</option>
               <option>Skill-training facilitation</option>
+              <option>Animal welfare / feeding</option>
               <option>Women's programs</option>
               <option>Admin / digital support</option>
             </select>
@@ -394,39 +557,6 @@
       </div>
     </div>
 
-    <!-- Partner / CSR -->
-    <div class="bg-white border border-line-cool rounded-2xl p-6 sm:p-8 mt-6 reveal">
-      <h3 class="text-[1.4rem] font-display font-extrabold text-ink mb-2">Partner with us · CSR</h3>
-      <p class="text-slate mt-6">We welcome corporate CSR partnerships, institutional collaborations with hospitals, schools, and training centres, and in-kind donations. To explore working together, write to <a class="text-ember hover:text-orange" href="mailto:kartik@kagurfoundation.in">kartik@kagurfoundation.in</a> or use the contact form below.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ========================= GALLERY ========================= -->
-<section class="py-16 md:py-24 lg:py-28" id="gallery">
-  <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
-    <p class="font-sans font-semibold text-[.74rem] tracking-[.22em] uppercase text-orange mb-4 reveal">Impact &amp; gallery</p>
-    <h2 class="font-display font-extrabold text-[clamp(1.9rem,4vw,3rem)] max-w-[22ch] text-ink reveal">Photos from the field.</h2>
-    <p class="text-[clamp(1.05rem,1.6vw,1.28rem)] text-slate max-w-[60ch] mt-3.5 reveal">A look at our health camps and community work — with more stories and, once our first financial year closes, transparency reports to follow.</p>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-9 reveal">
-      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
-        <img class="w-full h-full object-cover" src="assets/img/gallery/health-camps.jpg" alt="Free health check-up camp with doctors examining a patient">
-        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Health camps</figcaption>
-      </figure>
-      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
-        <img class="w-full h-full object-cover" src="assets/img/gallery/skill-development.jpg" alt="Volunteers working on laptops at a Foundation event">
-        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Skill development</figcaption>
-      </figure>
-      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
-        <img class="w-full h-full object-cover" src="assets/img/gallery/education.jpg" alt="Community outreach at a Foundation health camp">
-        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Education</figcaption>
-      </figure>
-      <figure class="aspect-4/3 rounded-xl overflow-hidden relative group m-0">
-        <img class="w-full h-full object-cover" src="assets/img/gallery/women-empowerment.jpg" alt="Woman being attended to by a doctor at a Foundation health camp">
-        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent text-white text-[.82rem] font-medium px-3 py-2.5">Women empowerment</figcaption>
-      </figure>
-    </div>
-    <p class="text-[.86rem] text-muted mt-4">More photos, videos &amp; annual reports to be added over time.</p>
   </div>
 </section>
 
@@ -487,10 +617,11 @@
   <div class="max-w-[1180px] mx-auto px-5 sm:px-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr] gap-10 pb-9 border-b border-white/12">
       <div>
-        <a class="inline-flex items-center bg-white rounded-xl px-4 py-3 no-underline" href="#home" aria-label="Kagur Foundation home">
-          <img class="h-8 sm:h-9 w-auto" src="assets/img/kagur_logo.webp" alt="Kagur Foundation — Karma · Ahimsa · Gyan · Utthan · Rashtra">
+        <a class="inline-flex items-center no-underline" href="#home" aria-label="Kagur Foundation home">
+          <!-- No white logo asset yet — the mark is rendered white with a CSS filter -->
+          <img class="h-9 sm:h-10 w-auto brightness-0 invert" src="assets/img/kagur_logo.webp" alt="Kagur Foundation — Karma · Ahimsa · Gyan · Utthan · Rashtra">
         </a>
-        <p class="text-[.92rem] mt-3.5 max-w-[36ch]">A Gurugram-based charitable trust working for health, education, skill development, and women empowerment.</p>
+        <p class="text-[.92rem] mt-3.5 max-w-[36ch]">A Gurugram-based charitable trust working for health, education and skills, women empowerment, and animal welfare.</p>
       </div>
       <div>
         <h4 class="text-white font-sans font-semibold text-[.78rem] tracking-[.14em] uppercase mb-4">Explore</h4>

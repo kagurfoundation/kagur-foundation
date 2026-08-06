@@ -45,6 +45,36 @@ if (reduce || !('IntersectionObserver' in window)) {
   items.forEach(function(el){ io.observe(el); });
 }
 
+// Gallery marquee — duplicate each track's items so the -50% loop is seamless
+document.querySelectorAll('[data-marquee-track]').forEach(function(track){
+  var originals = Array.prototype.slice.call(track.children);
+  originals.forEach(function(node){
+    var copy = node.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    track.appendChild(copy);
+  });
+});
+
+// Copy-to-clipboard (UPI ID)
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var text = btn.getAttribute('data-copy');
+    var done = function(){
+      var original = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(function(){ btn.textContent = original; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (err) {}
+      document.body.removeChild(ta);
+    }
+  });
+});
+
 // Donate button reminder until a real payment link is wired up
 document.querySelectorAll('[data-pay-link]').forEach(function(btn){
   btn.addEventListener('click', function(e){
